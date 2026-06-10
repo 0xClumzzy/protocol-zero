@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PROTOCOL ZERO — INTEL</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="animations.css" />
+        <style>
+            .htb-section {
+                margin-top: 2rem;
+            }
+            .htb-card {
+                background: #0d0d0d;
+                border: 1px solid var(--border);
+                border-left: 3px solid #9fef00; /* HTB Green */
+                padding: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                position: relative;
+                overflow: hidden;
+            }
+            .htb-card::before {
+                content: "RANK: PROFESSIONAL";
+                position: absolute;
+                top: 0.5rem;
+                right: 0.8rem;
+                font-family: "VT323", monospace;
+                font-size: 0.7rem;
+                color: #9fef00;
+                opacity: 0.6;
+            }
+            .htb-badge-img {
+                max-width: 100%;
+                border: none !important;
+                filter: none !important; /* Keep the HTB branding colors */
+                background: transparent;
+                margin: 0;
+            }
+            .htb-card .btn-htb {
+                border-color: #9fef00;
+                color: #9fef00;
+            }
+            .htb-card .btn-htb:hover {
+                background: rgba(159, 239, 0, 0.1);
+                box-shadow: 0 0 15px rgba(159, 239, 0, 0.2);
+            }
+
+            /* Flag Styles */
+            .htb-stats {
+                display: flex;
+                gap: 1.5rem;
+                margin-top: 0.5rem;
+                padding-top: 1rem;
+                border-top: 1px dashed rgba(159, 239, 0, 0.2);
+            }
+            .stat-item {
+                display: flex;
+                flex-direction: column;
+            }
+            .stat-label {
+                font-size: 0.65rem;
+                color: #9fef00;
+                opacity: 0.7;
+                letter-spacing: 0.1em;
+            }
+            .stat-value {
+                font-size: 1.4rem;
+                font-weight: bold;
+                color: #fff;
+                font-family: "VT323", monospace;
+            }
+            .stat-value span {
+                font-size: 0.8rem;
+                color: #9fef00;
+                margin-left: 0.2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="site-title flicker" data-text="THE CLUMZZY PROTOCOL">
+                THE CLUMZZY PROTOCOL
+            </div>
+            <nav>
+                <a href="index.html"># HOME</a>
+                <span class="nav-sep">//</span>
+                <a href="skills and conquests.html">PROWESS</a>
+                <span class="nav-sep">//</span>
+                <a href="projects.html">PROJECTS</a>
+                <span class="nav-sep">//</span>
+                <a href="about.html" class="active">ABOUT</a>
+                <span class="nav-sep">//</span>
+                <a href="contact.html">CONTACT</a>
+                <span class="nav-sep">//</span>
+                <a href="graveyard.html">GRAVEYARD</a>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <h1 class="page-heading">WHO AM I!?</h1>
+                <div class="rule"></div>
+                <div
+                    style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 2rem;
+                        align-items: flex-start;
+                    "
+                >
+                    <img
+                        src="images/fpr.png"
+                        alt="Founder"
+                        class="profile-img"
+                    />
+                    <div>
+                        <div class="terminal-line">
+                            <span class="prompt">identity:</span>
+                            <span class="out"
+                                >CTF PLAYER. STUDENT. MENTOR. DUDE.</span
+                            >
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">Names:</span>
+                            <span class="out">Mr Theo Kufigwa</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">threat_level:</span>
+                            <span class="out">ZERO</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">status:</span>
+                            <span class="out">CHILL ■</span>
+                        </div>
+                        <br />
+                        <pre>
+                            Theo Kufigwa here....
+
+                            -- An undergraduate from Botho
+                            University
+
+                            -- Cyber security enthusiast
+
+                            -- The founder of Protocol Zero, building things, breaking things, and
+                                figuring it all out along the way.
+                        </pre>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="glyph" />
+
+            <section>
+                <h3 class="page-heading" style="font-size: 1.8rem">MISSION</h3>
+                <div class="rule"></div>
+                <div class="terminal-line">
+                    <span class="prompt">objective:</span>
+                </div>
+                <br />
+                <p>
+                    This site serves as everything you need to know in order to
+                    work with me. That goes for my projects, what I do, and
+                    whatever the hell else you want to know.
+                </p>
+                <br />
+                <a href="projects.html" class="btn">VIEW THE VAULT</a>
+            </section>
+
+            <hr class="glyph" />
+
+            <section class="htb-section">
+                <h3 class="page-heading" style="font-size: 1.8rem">
+                    OPERATIONAL STATUS
+                </h3>
+                <div class="rule"></div>
+                <div class="terminal-line">
+                    <span class="prompt">platform:</span>
+                    <span class="out">HACK THE BOX</span>
+                </div>
+                <br />
+                <div class="htb-card">
+                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem">
+                        CONNECTED TO HTB=> // SESSION: ACTIVE
+                    </p>
+
+                    <div
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 2rem;
+                            align-items: center;
+                        "
+                    >
+                        <a
+                            href="https://app.hackthebox.com/users/2663698"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <img
+                                src="https://www.hackthebox.com/badge/image/2663698"
+                                alt="Hack The Box Profile"
+                                class="htb-badge-img"
+                            />
+                        </a>
+
+                        <div class="htb-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">USER FLAGS</span>
+                                <span class="stat-value"
+                                    >17 <span>[CONFIRMED]</span></span
+                                >
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">SYSTEM FLAGS</span>
+                                <span class="stat-value"
+                                    >15 <span>[PWNED]</span></span
+                                >
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">POINTS</span>
+                                <span class="stat-value"
+                                    >134 <span>[ATTAINED]</span></span
+                                >
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">COUNTRY RANKING</span>
+                                <span class="stat-value"
+                                    >No.1 <span>[#BOTSWANA]</span></span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <a
+                        href="https://app.hackthebox.com/users/2663698?profile-top-tab=machines&ownership-period=1M&profile-bottom-tab=prolabs"
+                        class="btn btn-htb"
+                        target="_blank"
+                        rel="noopener"
+                        >↗ VIEW FULL PROFILE</a
+                    >
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© PROTOCOL ZERO — ALL RIGHTS RESERVED</p>
+        </footer>
+        <script src="animations.js"></script>
+    </body>
+</html>

@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PROTOCOL ZERO — PROWESS</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="animations.css" />
+        <style>
+            /* ── WRITEUP CARDS ── */
+            .writeup-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.2rem;
+                margin-top: 1.5rem;
+            }
+
+            .writeup-card {
+                background: #0e0e0e;
+                border: 1px solid var(--border);
+                border-left: 3px solid var(--muted);
+                padding: 1.2rem 1.2rem 1rem;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+                transition:
+                    border-color 0.2s,
+                    transform 0.2s,
+                    box-shadow 0.2s;
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            .writeup-card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .writeup-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(to right, var(--red), transparent);
+            }
+
+            .writeup-card:hover {
+                border-color: var(--muted);
+                border-left-color: var(--red-bright);
+                transform: translateY(-3px);
+                box-shadow:
+                    0 0 0 1px var(--red),
+                    0 8px 24px rgba(0, 0, 0, 0.5);
+            }
+
+            .writeup-card .wc-platform {
+                font-size: 0.65rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--red-bright);
+                font-family: "Share Tech Mono", monospace;
+            }
+
+            .writeup-card h3 {
+                font-family: "Bebas Neue", sans-serif;
+                font-size: 1.3rem;
+                letter-spacing: 0.1em;
+                color: var(--white);
+                margin: 0;
+            }
+
+            .writeup-card .wc-diff {
+                display: inline-block;
+                font-size: 0.68rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                padding: 0.15rem 0.55rem;
+                border: 1px solid;
+                margin-top: 0.2rem;
+                font-family: "Share Tech Mono", monospace;
+            }
+
+            .diff-easy   { color: #4a9a4a; border-color: #2a5a2a; }
+            .diff-medium { color: #a07a20; border-color: #604a10; }
+            .diff-hard   { color: var(--red-bright); border-color: var(--red); }
+            .diff-insane { color: #8844cc; border-color: #441188; }
+            .diff-tbd    { color: var(--muted); border-color: var(--border); }
+
+            .writeup-card .wc-link {
+                margin-top: auto;
+                padding-top: 0.8rem;
+                font-size: 0.75rem;
+                color: var(--mid);
+                text-decoration: none;
+                letter-spacing: 0.08em;
+                transition: color 0.2s;
+            }
+
+            .writeup-card .wc-link:hover {
+                color: var(--white);
+                text-decoration: underline;
+                text-decoration-color: var(--red-bright);
+            }
+
+            /* ── EXPANDABLE WRITEUPS ── */
+            .writeup-card .wc-details {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.3s;
+                font-size: 0.8rem;
+                color: var(--mid);
+                border-top: 0px solid var(--border);
+                margin-top: 0;
+            }
+
+            .writeup-card.expanded .wc-details {
+                max-height: 500px; /* Adjust as needed */
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top-width: 1px;
+            }
+
+            .wc-toggle {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.7rem;
+                color: var(--red-bright);
+                margin-top: 1rem;
+                font-family: "Share Tech Mono", monospace;
+                letter-spacing: 0.1em;
+                user-select: none;
+                transition: color 0.2s;
+            }
+
+            .wc-toggle:hover {
+                color: var(--white);
+            }
+
+            .wc-toggle i {
+                transition: transform 0.3s;
+            }
+
+            .writeup-card.expanded .wc-toggle i {
+                transform: rotate(180deg);
+            }
+
+            .wc-brief {
+                margin-top: 0.5rem;
+                font-size: 0.75rem;
+                line-height: 1.5;
+                color: var(--mid);
+            }
+
+            /* HTB Stats in Prowess */
+            .htb-prowess-stats {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+                margin: 1.5rem 0;
+                padding: 1.5rem;
+                background: rgba(159, 239, 0, 0.05);
+                border: 1px solid rgba(159, 239, 0, 0.15);
+                border-left: 4px solid #9fef00;
+            }
+            .prowess-stat {
+                display: flex;
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+            .prowess-stat-label {
+                font-size: 0.7rem;
+                color: #9fef00;
+                letter-spacing: 0.2em;
+                font-family: "VT323", monospace;
+            }
+            .prowess-stat-value {
+                font-size: 2.2rem;
+                color: var(--white);
+                line-height: 1;
+                font-family: "Bebas Neue", sans-serif;
+            }
+            .prowess-stat-value span {
+                font-size: 0.8rem;
+                color: var(--mid);
+                margin-left: 0.5rem;
+                font-family: "Share Tech Mono", monospace;
+                vertical-align: middle;
+            }
+
+            /* ── ACHIEVEMENTS LIST ── */
+            .achievement-list {
+                list-style: none;
+                padding: 0;
+                margin: 0.5rem 0 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .achievement-list li {
+                font-family: "Share Tech Mono", monospace;
+                font-size: 0.85rem;
+                color: var(--mid);
+                padding-left: 1.2rem;
+                position: relative;
+            }
+
+            .achievement-list li::before {
+                content: "▸";
+                position: absolute;
+                left: 0;
+                color: var(--red-bright);
+            }
+
+            /*
+               SKILL SET PANEL
+            */
+
+            .skill-panel {
+                margin-top: 1.5rem;
+            }
+
+            /* Category tabs */
+            .skill-tabs {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0;
+                border-bottom: 1px solid var(--border);
+                margin-bottom: 1.8rem;
+            }
+
+            .skill-tab {
+                background: transparent;
+                border: none;
+                border-bottom: 2px solid transparent;
+                color: var(--mid);
+                font-family: "Share Tech Mono", monospace;
+                font-size: 0.75rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                padding: 0.6rem 1.2rem;
+                cursor: pointer;
+                transition: color 0.2s, border-color 0.2s;
+                margin-bottom: -1px;
+                position: relative;
+            }
+
+            .skill-tab::before {
+                content: attr(data-index);
+                color: var(--red-bright);
+                margin-right: 0.4rem;
+                font-family: "VT323", monospace;
+                font-size: 0.9rem;
+            }
+
+            .skill-tab:hover {
+                color: var(--light);
+            }
+
+            .skill-tab.active {
+                color: var(--white);
+                border-bottom-color: var(--red-bright);
+            }
+
+            /* Category pane */
+            .skill-pane {
+                display: none;
+            }
+
+            .skill-pane.active {
+                display: block;
+                animation: paneFadeIn 0.3s ease both;
+            }
+
+            @keyframes paneFadeIn {
+                from { opacity: 0; transform: translateY(8px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+
+            /* Skill grid */
+            .skill-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                padding: 0.5rem 0;
+                opacity: 0;
+                transform: translateY(10px);
+                transition: opacity 0.4s ease, transform 0.4s ease;
+            }
+
+            .skill-grid.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .skill-item {
+                background: #0e0e0e;
+                border: 1px solid var(--border);
+                border-left: 2px solid var(--muted);
+                padding: 0.6rem 1rem;
+                font-family: "Share Tech Mono", monospace;
+                font-size: 0.75rem;
+                color: var(--light);
+                letter-spacing: 0.1em;
+                transition: all 0.2s ease;
+                cursor: default;
+                display: flex;
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+
+            .skill-item:hover {
+                border-color: var(--muted);
+                border-left-color: var(--red-bright);
+                background: #151515;
+                color: var(--white);
+                transform: translateY(-2px);
+            }
+
+            .skill-item .skill-tag {
+                font-size: 0.6rem;
+                color: var(--muted);
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+
+            /* ── SKILL LEGEND ── */
+            .skill-legend {
+                display: flex;
+                gap: 1.5rem;
+                margin-top: 1.2rem;
+                flex-wrap: wrap;
+            }
+
+            .legend-item {
+                display: flex;
+                align-items: center;
+                gap: 0.45rem;
+                font-family: "Share Tech Mono", monospace;
+                font-size: 0.68rem;
+                letter-spacing: 0.1em;
+                color: var(--muted);
+                text-transform: uppercase;
+            }
+
+            .legend-dot {
+                width: 20px;
+                height: 3px;
+                background: linear-gradient(to right, var(--red), var(--red-bright));
+                flex-shrink: 0;
+            }
+
+            /* ── RADAR MINI VISUAL ── */
+            .skill-radar-wrap {
+                display: flex;
+                justify-content: center;
+                margin: 1.5rem 0 0.5rem;
+            }
+
+            .radar-svg text {
+                font-family: "Share Tech Mono", monospace;
+                fill: var(--mid);
+                font-size: 10px;
+            }
+
+            /* ── NEW ANIMATION: data-stream lines in section bg ── */
+            .data-stream-bg {
+                position: absolute;
+                inset: 0;
+                overflow: hidden;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .data-stream-bg span {
+                position: absolute;
+                top: -20px;
+                font-family: "VT323", monospace;
+                font-size: 0.75rem;
+                color: var(--red);
+                opacity: 0;
+                animation: streamDrop var(--dur, 4s) linear var(--delay, 0s) infinite;
+                writing-mode: horizontal-tb;
+                letter-spacing: 0.05em;
+                user-select: none;
+            }
+
+            @keyframes streamDrop {
+                0%   { opacity: 0; transform: translateY(0); }
+                5%   { opacity: 0.12; }
+                90%  { opacity: 0.06; }
+                100% { opacity: 0; transform: translateY(120px); }
+            }
+
+            section {
+                position: relative;
+                z-index: 1;
+            }
+
+            section > *:not(.data-stream-bg) {
+                position: relative;
+                z-index: 1;
+            }
+
+            /* ── SCAN LINE SWEEP ── */
+            @keyframes scanSweep {
+                0%   { top: -2px; opacity: 0.25; }
+                50%  { opacity: 0.08; }
+                100% { top: 100%; opacity: 0; }
+            }
+
+            .scan-sweep {
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(to right, transparent, var(--red), transparent);
+                pointer-events: none;
+                z-index: 2;
+                animation: scanSweep 5s ease-in-out infinite;
+            }
+
+            /* ── COLLAPSIBLE SECTION ── */
+            .section-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+            }
+
+            .section-toggle {
+                background: transparent;
+                border: 1px solid var(--border);
+                color: var(--mid);
+                font-family: "Share Tech Mono", monospace;
+                font-size: 0.7rem;
+                padding: 0.25rem 0.6rem;
+                cursor: pointer;
+                transition: all 0.2s;
+                letter-spacing: 0.1em;
+            }
+
+            .section-toggle:hover {
+                color: var(--white);
+                border-color: var(--red-bright);
+                background: rgba(204, 34, 0, 0.1);
+            }
+
+            .collapsible-content {
+                max-height: 5000px;
+                opacity: 1;
+                overflow: hidden;
+                transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+            }
+
+            .collapsible-content.minimized {
+                max-height: 0;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            @media (max-width: 600px) {
+                .skill-row {
+                    grid-template-columns: 120px 1fr 40px;
+                    gap: 0.6rem;
+                }
+                .skill-tabs {
+                    overflow-x: auto;
+                    flex-wrap: nowrap;
+                }
+                .skill-tab {
+                    white-space: nowrap;
+                    padding: 0.6rem 0.8rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="site-title flicker" data-text="PROWESS PROTOCOL">
+                PROWESS PROTOCOL
+            </div>
+            <nav>
+                <a href="index.html"># HOME</a>
+                <span class="nav-sep">//</span>
+                <a href="projects.html">PROJECTS</a>
+                <span class="nav-sep">//</span>
+                <a href="skills and conquests.html" class="active">PROWESS</a>
+                <span class="nav-sep">//</span>
+                <a href="about.html">ABOUT</a>
+                <span class="nav-sep">//</span>
+                <a href="contact.html">CONTACT</a>
+                <span class="nav-sep">//</span>
+                <a href="graveyard.html">GRAVEYARD</a>
+            </nav>
+        </header>
+
+        <main>
+            <!--
+                 CERTIFICATIONS + QUALIFICATIONS
+             -->
+            <section>
+                <div class="scan-sweep"></div>
+                <h1 class="page-heading">THE ARSENAL</h1>
+                <div class="rule"></div>
+                <div class="terminal-line">
+                    <span class="prompt">root@p0 ~ $</span>
+                    <span class="out"> cat ./credentials.txt</span>
+                </div>
+                <br />
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>CERTIFICATIONS</h3>
+                        <p>Not yet. Sit still and watch the show...</p>
+                        <br />
+                        <a href="https://github.com/MrXploit267" class="btn" target="_blank" rel="noopener">↗ GITHUB FOR NOW</a>
+                        <br /><br />
+                        <span class="status active">● PENDING</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>QUALIFICATIONS</h3>
+                        <p>Currently working on my Cyber Security degree @ BOTHO UNIVERSITY.</p>
+                        <br />
+                        <span class="status active">● ACTIVE</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>ACHIEVEMENTS</h3>
+                        <ul class="achievement-list">
+                            <li>TOP 5 — BOCRA CYBERLYMPICS 2026 Finals</li>
+                            <li>TOP 3 — BOCRA CYBER NATIONAL DRILL</li>
+                            <li></li>
+                        </ul>
+                        <br />
+                        <span class="status active">● VERIFIED</span>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="glyph" />
+
+            <!--
+                 SKILL SET PANEL — the main event
+             -->
+            <section id="skill-section">
+                <div class="data-stream-bg" id="data-stream"></div>
+                <h1 class="page-heading">SKILL MATRIX</h1>
+                <div class="rule"></div>
+                <div class="terminal-line">
+                    <span class="prompt">root@p0 ~ $</span>
+                    <span class="out"> ./skills --list --verbose</span>
+                </div>
+                <br />
+
+                <!-- Tabs -->
+                <div class="skill-tabs" role="tablist">
+                    <button class="skill-tab active" data-tab="offensive" data-index="01" role="tab">OFFENSIVE</button>
+                    <button class="skill-tab" data-tab="defensive" data-index="02" role="tab">DEFENSIVE</button>
+                    <button class="skill-tab" data-tab="dev" data-index="03" role="tab">DEV / TOOLING</button>
+                    <button class="skill-tab" data-tab="recon" data-index="04" role="tab">RECON</button>
+                    <button class="skill-tab" data-tab="grc" data-index="05" role="tab">GRC</button>
+                    <button class="skill-tab" data-tab="networking" data-index="06" role="tab">NETWORKING</button>
+                </div>
+
+                <div class="skill-panel">
+
+                    <!-- OFFENSIVE -->
+                    <div class="skill-pane active" id="pane-offensive">
+                        <div class="skill-grid">
+                            <div class="skill-item">Web Exploitation<span class="skill-tag">OWASP Top 10</span></div>
+                            <div class="skill-item">Privilege Escalation<span class="skill-tag">Linux </span></div>
+                            <div class="skill-item">Buffer Overflows<span class="skill-tag">NOT YET </span></div>
+                            <div class="skill-item">Metasploit<span class="skill-tag">Post-Exploitation</span></div>
+                            <div class="skill-item">Password Cracking<span class="skill-tag">JohnTheRipper</span></div>
+                        </div>
+                    </div>
+
+                    <!-- DEFENSIVE -->
+                    <div class="skill-pane" id="pane-defensive">
+                        <div class="skill-grid">
+                            <div class="skill-item">Log Analysis<span class="skill-tag">NOT YET </span></div>
+                            <div class="skill-item">Incident Response<span class="skill-tag">NOT YET</span></div>
+                            <div class="skill-item">Malware Analysis<span class="skill-tag">Static Analysis</span></div>
+                            <div class="skill-item">Network Forensics<span class="skill-tag">Wireshark / tcpdump</span></div>
+                            <div class="skill-item">Threat Modelling<span class="skill-tag">NOT YET</span></div>
+                        </div>
+                    </div>
+
+                    <!-- DEV / TOOLING -->
+                    <div class="skill-pane" id="pane-dev">
+                        <div class="skill-grid">
+                            <div class="skill-item">Python<span class="skill-tag">Scripting / Automation / Tooling </span></div>
+                            <div class="skill-item">Bash / Shell<span class="skill-tag">Scripting</span></div>
+                            <div class="skill-item">HTML/CSS/JavaScript<span class="skill-tag">Web </span></div>
+                            <div class="skill-item">Linux <span class="skill-tag"> Arch</span></div>
+                            <div class="skill-item">Docker <span class="skill-tag"> Containers </span></div>
+                            <div class="skill-item">Git<span class="skill-tag">Version Control</span></div>
+                        </div>
+                    </div>
+
+                    <!-- RECON -->
+                    <div class="skill-pane" id="pane-recon">
+                        <div class="skill-grid">
+                            <div class="skill-item">OSINT<span class="skill-tag">Passive Recon</span></div>
+                            <div class="skill-item">Nmap / Rustscan<span class="skill-tag">Port + Service Scan</span></div>
+                            <div class="skill-item">Gobuster / ffuf<span class="skill-tag">Directory Fuzzing</span></div>
+                            <div class="skill-item">Burp Suite<span class="skill-tag">Proxy / Intruder</span></div>
+                            <div class="skill-item">Shodan <span class="skill-tag">Attack Surface</span></div>
+                        </div>
+                    </div>
+
+                    <!--GRC -->
+                    <div class="skill-pane" id="pane-grc">
+                        <div class="skill-grid">
+                            <div class="skill-item">Risk Management<span class="skill-tag">Risk Assessment</span></div>
+                            <div class="skill-item">IT Auditing<span class="skill-tag">Control Evaluation</span></div>
+                            <div class="skill-item">Security Governance<span class="skill-tag">Policies & Compliance</span></div>
+                            <div class="skill-item">Asset Management<span class="skill-tag">Inventory & Classification</span></div>
+                            <div class="skill-item">Compliance Frameworks<span class="skill-tag">ISO 27001 / NIST</span></div>
+                        </div>
+                    </div>
+
+                    <!--NETWORKING -->
+                    <div class="skill-pane" id="pane-networking">
+                        <div class="skill-grid">
+                            <div class="skill-item">Computer Networks<span class="skill-tag">TCP/IP, ISO model, subnetting </span></div>
+                            <div class="skill-item">Network Security<span class="skill-tag">Firewalls, VPNs </span></div>
+                            <div class="skill-item">Internet Security<span class="skill-tag">Secure Communications</span></div>
+                            <div class="skill-item">Wireless Security<span class="skill-tag">Wi-Fi & Mobile Network Protection</span></div>
+                        </div>
+                    </div>
+                </div><!-- .skill-panel -->
+
+                    <div class="legend-item" style="color: var(--red-bright);">// IS IT ENOUGH?.</div>
+                </div>
+            </section>
+
+            <hr class="glyph" />
+
+            <!-- HTB WRITEUPS -->
+            <section id="writeup-section">
+                <div class="section-header">
+                    <h1 class="page-heading" style="margin-bottom: 0;">HTB WRITEUPS</h1>
+                    <button class="section-toggle" id="writeup-toggle-btn">[ MINIMIZE ]</button>
+                </div>
+                <div class="rule"></div>
+
+                <div class="collapsible-content" id="writeup-content">
+                    <div class="terminal-line">
+                        <span class="prompt">root@p0 ~ $</span>
+                        <span class="out"> ls -la ./writeups/htb/</span>
+                    </div>
+
+                <div class="htb-prowess-stats">
+                    <div class="prowess-stat">
+                        <span class="prowess-stat-label">USER_FLAGS COLLECTED</span>
+                        <div class="prowess-stat-value">17 <span>ROOT FOOTHOLDS</span></div>
+                    </div>
+                    <div class="prowess-stat" style="border-left: 1px solid rgba(159, 239, 0, 0.2); padding-left: 2rem;">
+                        <span class="prowess-stat-label">SYSTEM FLAGS COLLECTED</span>
+                        <div class="prowess-stat-value">15 <span>SYSTEM OWNERSHIP</span></div>
+                    </div>
+                    <div class="prowess-stat" style="border-left: 1px solid rgba(159, 239, 0, 0.2); padding-left: 2rem;">
+                        <span class="prowess-stat-label">COUNTRY RANKING=> #BW</span>
+                        <div class="prowess-stat-value">#1 <span>BOTSWANA TOP TIER</span></div>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.75rem; color: var(--muted); margin-top: 0.8rem;">
+                    HackTheBox machine writeups <code style="color: var(--red-bright)">#</code> COMING SOON.....................
+                </p>
+
+                <div class="writeup-grid" id="writeup-grid">
+                    <!-- HELIX -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>HELIX</h3>
+                        <span class="wc-diff diff-medium">[ MEDIUM ]</span>
+                        <p class="wc-brief">exploiting a known Remote Code Execution (RCE) vulnerability in Apache NiFi .</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong> Enumerated services and discovered the NiFi subdomain hosting a vulnerable Apache NiFi instance.</p>
+                            <p><strong>EXPLOIT:</strong>Exploited a NiFi vulnerability to achieve remote code execution and obtain a shell as the nifi user.</p>
+                            <p><strong>PRIVESC:</strong> Recovered a protected maintenance document and extracted details about the maintenance workflow.</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+                    <!-- CONNECTED -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>CONNECTED</h3>
+                        <span class="wc-diff diff-medium">[ EASY ]</span>
+                        <p class="wc-brief">Discovery of FreePBX 16 followed by a SQL injection (CVE-2025-57819) used to reset the administrative password.</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong> Ports 22 and 80; identification of FreePBX 16.0.40.7</p>
+                            <p><strong>EXPLOIT:</strong>SQL injection (CVE-2025-57819) in the ajax.php endpoint to reset the administrative password.</p>
+                            <p><strong>PRIVESC:</strong>Modification of a writable hook file (logrotate) to trigger an incron rule running as root
+</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+
+                    <!-- DEVAREA -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>DEVAREA</h3>
+                        <span class="wc-diff diff-medium">[ MEDIUM ]</span>
+                        <p class="wc-brief">chain of web application vulnerabilities leading to remote code execution and privilege escalation.</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong> Enumerated services and identified the vulnerable Apache CXF SOAP service and Hoverfly infrastructure.</p>
+                            <p><strong>EXPLOIT:</strong> Abused a SOAP file-read vulnerability to obtain Hoverfly credentials and gain code execution as.</p>
+                            <p><strong>PRIVESC:</strong> Double Symlink Chain Execution.</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+                    <!-- VARIATYPE -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>VARIATYPE</h3>
+                        <span class="wc-diff diff-medium">[ MEDIUM ]</span>
+                        <p class="wc-brief"> web exploitation, credential recovery from Git history, and privilege escalation via multiple CVEs</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong>Enumerated services, discovered an exposed Git repository, and recovered portal credentials from Git history.</p>
+                            <p><strong>EXPLOIT:</strong> Authenticated to the portal and exploited the Variable Font Generator to achieve remote code execution</p>
+                            <p><strong>PRIVESC:</strong> Chained a FontForge command injection to become steve, then abused a vulnerable root-run validator script to inject an SSH key and gain root access.</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+                    <!-- SMARTHIRE -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>SMARTHIRE</h3>
+                        <span class="wc-diff diff-medium">[ MEDIUM ]</span>
+                        <p class="wc-brief">MLflow infrastructure abuse, Pickle deserialization vulnerabilities, and Python module hijacking for privilege escalation.</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong> Enumerated services, discovered the MLflow subdomain, and accessed it using default credentials </p>
+                            <p><strong>EXPLOIT:</strong>RCE via pickle deserializtion</p>
+                            <p><strong>PRIVESC:</strong> abusing root priviledged script .</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+                    <!-- DEVHUB -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>DEVHUB</h3>
+                        <span class="wc-diff diff-medium">[ MEDIUM ]</span>
+                        <p class="wc-brief">: RCE via MCPJam followed by unauthorized access to a Jupyter Notebook using a recovered session token
+.</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong> Ports 22, 80, and 6274</p>
+                            <p><strong>EXPLOIT:</strong> RCE via an exposed MCPJam HTTP endpoint and unauthorized access to a Jupyter Notebook using a recovered token.</p>
+                            <p><strong>PRIVESC:</strong> Exploitation of the ops._admin_dump tool using a secret API key found in the server source code</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+                    <!-- INTERPRETER -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>INTERPRETER</h3>
+                        <span class="wc-diff diff-medium">[ MEDIUM ]</span>
+                        <p class="wc-brief">dentification of Mirth Connect 4.4.0 followed by blind command injection (CVE-2023-43208).</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong> Found binary 'p-intel' on port 9999.</p>
+                            <p><strong>EXPLOIT:</strong> Buffer overflow in the input handler of the interpreter.</p>
+                            <p><strong>PRIVESC:</strong> Path hijacking via insecure environment variables.</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+                    <!-- PRINCIPAL -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>PRINCIPAL</h3>
+                        <span class="wc-diff diff-medium">[ MEDIUM ]</span>
+                        <p class="wc-brief">Discovery of pac4j v1.2.0 and exploitation of an authentication bypass (CVE-2026-29000) via forged JWE tokens.</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong> Ports 22 and 8080; identification of pac4j v1.2.0.</p>
+                            <p><strong>EXPLOIT:</strong> Authentication bypass (CVE-2026-29000) by forging a JWE token with administrative roles
+.</p>
+                            <p><strong>PRIVESC:</strong> Misconfigured read access to the SSH CA private key by the deployers group.</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+                    <!-- SILENTIUM -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>SILENTIUM</h3>
+                        <span class="wc-diff diff-easy">[ EASY ]</span>
+                        <p class="wc-brief">Password reset (CVE-2025-58434) and RCE (CVE-2025-59528) in the Flowise application
+                        .</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong>Discovery of the staging.silentium.htb vhost</p>
+                            <p><strong>EXPLOIT:</strong> Password reset (CVE-2025-58434) and RCE (CVE-2025-59528) in Flowise
+</p>
+                            <p><strong>PRIVESC:</strong> Exploitation of the internal Gogs service using CVE-2025-8110.</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+                    <!-- 2MILLION -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>2MILLION</h3>
+                        <span class="wc-diff diff-easy">[ EASY ]</span>
+                        <p class="wc-brief">Manual discovery of API endpoints led to parameter tampering of the is_admin variable and command injection in the VPN configuration generator.</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong> Ports 22 and 80; manual endpoint enumeration of hidden API routes</p>
+                            <p><strong>EXPLOIT:</strong> Reverse engineering of obfuscated JavaScript, parameter tampering of the is_admin variable, and command injection in the VPN configuration field.</p>
+                            <p><strong>PRIVESC:</strong> Exploitation of the OverlayFS / FUSE kernel vulnerability (CVE-2023-0386).</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+                    <!-- CCTV -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>CCTV</h3>
+                        <span class="wc-diff diff-easy">[ EASY ]</span>
+                        <p class="wc-brief">identification of the /zm directory followed by a blind SQL injection in Zone Minder to extract user credentials
+.</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong> Ports 22 and 80; discovery of the /zm directory.</p>
+                            <p><strong>EXPLOIT:</strong> : Blind SQL injection in Zone Minder to extract user credentials</p>
+                            <p><strong>PRIVESC:</strong> Authenticated RCE (CVE-2025-60787) within the motionEye service</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+
+                    <!-- WINGDATA -->
+                    <div class="writeup-card">
+                        <span class="wc-platform">HackTheBox</span>
+                        <h3>WINGDATA</h3>
+                        <span class="wc-diff diff-easy">[ EASY ]</span>
+                        <p class="wc-brief"> Identification of the Wing FTP vhost followed by authenticated RCE (CVE-2025-47812) and offline SHA-256 hash cracking.</p>
+
+                        <div class="wc-details">
+                            <p><strong>RECON:</strong> Ports 22 and 80; identification of the ftp.wingdata.htb vhost
+.</p>
+                            <p><strong>EXPLOIT:</strong> Authenticated RCE (CVE-2025-47812) in Wing FTP and offline cracking of SHA-256 user hashes.</p>
+                            <p><strong>PRIVESC:</strong> PATH_MAX overflow (CVE-2025-4517) in the Python tarfile module to bypass symlink filters.</p>
+                        </div>
+
+                        <div class="wc-toggle">
+                            <i>▼</i> <span>VIEW INTEL</span>
+                        </div>
+                        <a href="#" class="wc-link" target="_blank" rel="noopener">↗ FULL REPORT</a>
+                    </div>
+                </div>
+            </div><!-- .collapsible-content -->
+            </section>
+
+            <hr class="glyph" />
+
+            <section>
+                <p class="text-muted" style="font-size: 0.8rem;">
+                    WRITEUPS COMING SOON
+                    More writeups incoming as machines get pwned.<br />
+                    Check the <a href="graveyard.html">GRAVEYARD</a> for discontinued ops.
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© PROTOCOL ZERO — ALL RIGHTS RESERVED</p>
+        </footer>
+
+        <script src="animations.js"></script>
+        <script>
+        (function () {
+            /* ── SKILL TABS ── */
+            const tabs  = document.querySelectorAll('.skill-tab');
+            const panes = document.querySelectorAll('.skill-pane');
+
+            function activateTab(tabEl) {
+                tabs.forEach(t  => t.classList.remove('active'));
+                panes.forEach(p => p.classList.remove('active'));
+                tabEl.classList.add('active');
+                const pane = document.getElementById('pane-' + tabEl.dataset.tab);
+                if (pane) {
+                    pane.classList.add('active');
+                    revealSkillGrid(pane);
+                }
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => activateTab(tab));
+            });
+
+            function revealSkillGrid(pane) {
+                const grid = pane.querySelector('.skill-grid');
+                if (grid) {
+                    grid.classList.remove('visible');
+                    setTimeout(() => grid.classList.add('visible'), 50);
+
+                    grid.querySelectorAll('.skill-item').forEach((item, i) => {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(10px)';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, i * 40 + 100);
+                    });
+                }
+            }
+
+            /* Trigger for initial active pane */
+            const initialPane = document.querySelector('.skill-pane.active');
+            if (initialPane) {
+                // Fire after section is in view
+                const skillSec = document.getElementById('skill-section');
+                const skillObs = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        revealSkillGrid(initialPane);
+                        skillObs.disconnect();
+                    }
+                }, { threshold: 0.1 });
+                skillObs.observe(skillSec);
+            }
+
+            /* ── DATA STREAM BACKGROUND ── */
+            const streamEl = document.getElementById('data-stream');
+            const chars = '01アイウエオカキクケコ/\\<>{}[]!@#$%^&*'.split('');
+            for (let i = 0; i < 14; i++) {
+                const span = document.createElement('span');
+                const col  = (i / 14) * 100;
+                const dur  = (3 + Math.random() * 3).toFixed(1);
+                const del  = (Math.random() * 5).toFixed(1);
+                span.style.cssText = `left:${col}%;--dur:${dur}s;--delay:${del}s;`;
+                // random short string
+                span.textContent = Array.from({ length: 3 + Math.floor(Math.random() * 4) },
+                    () => chars[Math.floor(Math.random() * chars.length)]).join('');
+                streamEl.appendChild(span);
+            }
+
+            /* ── WRITEUP CARDS stagger ── */
+            const grid    = document.getElementById('writeup-grid');
+            const wcards  = document.querySelectorAll('.writeup-card');
+            const gridObs = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    wcards.forEach((card, i) => {
+                        setTimeout(() => card.classList.add('visible'), i * 70);
+                    });
+                    gridObs.disconnect();
+                }
+            }, { threshold: 0.05 });
+            if (grid) gridObs.observe(grid);
+
+            /* ── TOGGLE WRITEUP DETAILS ── */
+            document.querySelectorAll('.wc-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    const card = this.closest('.writeup-card');
+                    card.classList.toggle('expanded');
+                    const btnText = this.querySelector('span');
+                    if (card.classList.contains('expanded')) {
+                        btnText.textContent = 'HIDE INTEL';
+                    } else {
+                        btnText.textContent = 'VIEW INTEL';
+                    }
+                });
+            });
+
+            /* ── SECTION MINIMIZE ── */
+            const writeupToggle = document.getElementById('writeup-toggle-btn');
+            const writeupContent = document.getElementById('writeup-content');
+
+            if (writeupToggle && writeupContent) {
+                writeupToggle.addEventListener('click', () => {
+                    const isMinimized = writeupContent.classList.toggle('minimized');
+                    writeupToggle.textContent = isMinimized ? '[ EXPAND ]' : '[ MINIMIZE ]';
+
+                    // If expanding, re-trigger cards reveal if they weren't revealed yet
+                    if (!isMinimized) {
+                        wcards.forEach((card, i) => {
+                            if (!card.classList.contains('visible')) {
+                                setTimeout(() => card.classList.add('visible'), i * 50);
+                            }
+                        });
+                    }
+                });
+            }
+
+        })();
+        </script>
+    </body>
+</html>

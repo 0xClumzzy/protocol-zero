@@ -1,0 +1,404 @@
+/*
+   PROTOCOL ZERO — ANIMATION LAYER
+   Minimal. Intentional. No cap.
+   */
+
+/*
+   1. PAGE ENTRANCE — everything fades up on load
+    */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Site title drops in */
+.site-title {
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Nav slides in slightly after */
+nav {
+    animation: fadeIn 0.5s ease 0.2s both;
+}
+
+/* Main content staggers in */
+main > * {
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+main > *:nth-child(1) {
+    animation-delay: 0.15s;
+}
+main > *:nth-child(2) {
+    animation-delay: 0.25s;
+}
+main > *:nth-child(3) {
+    animation-delay: 0.35s;
+}
+main > *:nth-child(4) {
+    animation-delay: 0.45s;
+}
+
+footer {
+    animation: fadeIn 0.5s ease 0.5s both;
+}
+
+/*
+   2. GLITCH — title flicker with a real glitch
+    */
+@keyframes glitch {
+    0% {
+        clip-path: inset(40% 0 61% 0);
+        transform: translateX(-4px);
+    }
+    20% {
+        clip-path: inset(92% 0 1% 0);
+        transform: translateX(4px);
+    }
+    40% {
+        clip-path: inset(43% 0 1% 0);
+        transform: translateX(-2px);
+    }
+    60% {
+        clip-path: inset(25% 0 58% 0);
+        transform: translateX(2px);
+    }
+    80% {
+        clip-path: inset(54% 0 7% 0);
+        transform: translateX(-4px);
+    }
+    100% {
+        clip-path: inset(58% 0 43% 0);
+        transform: translateX(4px);
+    }
+}
+
+/* Glitch pseudo-elements on the site title */
+.site-title {
+    position: relative;
+}
+
+.site-title::before,
+.site-title::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Override previous ::after used for outline ghost */
+.site-title::after {
+    color: var(--white);
+    -webkit-text-stroke: 0;
+    text-shadow: -3px 0 var(--red-bright);
+    opacity: 0;
+    animation: glitch-after 7s infinite step-end;
+}
+
+.site-title::before {
+    color: var(--white);
+    text-shadow: 3px 0 var(--mid);
+    opacity: 0;
+    animation: glitch-before 7s infinite step-end;
+}
+
+@keyframes glitch-after {
+    0%,
+    95%,
+    100% {
+        opacity: 0;
+    }
+    96% {
+        opacity: 1;
+        animation-name: glitch-after, glitch;
+        clip-path: inset(10% 0 80% 0);
+        transform: translateX(-3px);
+    }
+    97% {
+        opacity: 1;
+        clip-path: inset(60% 0 10% 0);
+        transform: translateX(3px);
+    }
+    98% {
+        opacity: 1;
+        clip-path: inset(30% 0 50% 0);
+        transform: translateX(-2px);
+    }
+    99% {
+        opacity: 0;
+    }
+}
+
+@keyframes glitch-before {
+    0%,
+    95.5%,
+    100% {
+        opacity: 0;
+    }
+    96.5% {
+        opacity: 1;
+        clip-path: inset(70% 0 5% 0);
+        transform: translateX(4px);
+    }
+    97.5% {
+        opacity: 1;
+        clip-path: inset(20% 0 60% 0);
+        transform: translateX(-3px);
+    }
+    98.5% {
+        opacity: 0;
+    }
+}
+
+/*
+   3. TERMINAL LINES — type-in effect
+    */
+@keyframes typeReveal {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.terminal-line {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Each terminal line reveals in sequence */
+.terminal-line:nth-child(1) {
+    animation: typeReveal 0.5s steps(30, end) 0.4s both;
+}
+.terminal-line:nth-child(2) {
+    animation: typeReveal 0.5s steps(30, end) 0.85s both;
+}
+.terminal-line:nth-child(3) {
+    animation: typeReveal 0.5s steps(30, end) 1.3s both;
+}
+.terminal-line:nth-child(4) {
+    animation: typeReveal 0.5s steps(30, end) 1.75s both;
+}
+
+/*
+   4. SCROLL REVEAL — sections appear as you scroll
+    */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*
+   5. PROJECT CARDS — stagger on reveal
+    */
+.project-card {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger via JS-injected delay */
+.project-card:nth-child(1) {
+    transition-delay: 0s;
+}
+.project-card:nth-child(2) {
+    transition-delay: 0.1s;
+}
+.project-card:nth-child(3) {
+    transition-delay: 0.2s;
+}
+.project-card:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+/* Hover: subtle lift + red edge glow */
+.project-card:hover {
+    border-color: var(--muted);
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 0 1px var(--red),
+        0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Grave items same treatment */
+.grave-item {
+    opacity: 0;
+    transform: translateX(-12px);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.grave-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.grave-item:nth-child(1) {
+    transition-delay: 0s;
+}
+.grave-item:nth-child(2) {
+    transition-delay: 0.1s;
+}
+.grave-item:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+/*
+   6. NAV LINK — underline sweep
+    */
+nav a {
+    position: relative;
+    overflow: hidden;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--red-bright);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.25s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Kill the bracket pseudo-elements conflict — keep only underline */
+nav a::before {
+    display: none;
+}
+
+/*
+   7. BUTTON — border trace on hover
+    */
+.btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* Red fill sweep (left to right) */
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    transform: scaleX(1);
+}
+
+.btn:hover {
+    color: var(--white);
+    border-color: var(--red-bright);
+    text-decoration: none;
+}
+
+/*
+   8. HERO RULE — width reveal on load
+    */
+@keyframes ruleExpand {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+.rule {
+    animation: ruleExpand 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+/*
+   9. STATUS BADGE — slow pulse
+    */
+@keyframes statusPulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.status.active .dot,
+.status.active::before {
+    display: inline-block;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* The ● character itself */
+.status.active {
+    animation: statusPulse 2.5s ease-in-out infinite;
+}
+
+/*
+   10. REDUCE MOTION — respect user preference
+   */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
