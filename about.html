@@ -75,6 +75,31 @@
                 font-size: 0.8rem;
                 color: #9fef00;
                 margin-left: 0.2rem;
+                display: inline-block;
+            }
+
+            @media (max-width: 768px) {
+                .htb-card {
+                    padding: 1.2rem;
+                }
+                .htb-stats {
+                    flex-wrap: wrap;
+                    gap: 1rem;
+                }
+                .stat-item {
+                    flex: 1 1 40%;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .stat-item {
+                    flex: 1 1 100%;
+                    border-bottom: 1px solid rgba(159, 239, 0, 0.1);
+                    padding-bottom: 0.5rem;
+                }
+                .stat-item:last-child {
+                    border-bottom: none;
+                }
             }
         </style>
     </head>
