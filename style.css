@@ -109,8 +109,7 @@ nav {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    gap: 0;
     padding: 0.6rem 1.5rem;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
@@ -370,7 +369,7 @@ a:hover {
 /*  PROJECT CARDS  */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1.5fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -378,7 +377,7 @@ a:hover {
 .project-card {
     background: #0e0e0e;
     border: 1px solid var(--border);
-    padding: 1.75rem;
+    padding: 1.5rem;
     position: relative;
     transition:
         border-color 0.2s,
@@ -410,7 +409,7 @@ a:hover {
 
 .project-card p {
     color: var(--mid);
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     line-height: 1.7;
     letter-spacing: normal;
 }
@@ -514,8 +513,6 @@ a:hover {
 }
 .terminal-line .out {
     color: var(--accent);
-    word-break: break-all;
-    white-space: normal;
 }
 
 /*  FOOTER  */
@@ -612,44 +609,22 @@ hr.glyph::before {
 }
 
 /*  RESPONSIVE  */
-@media (max-width: 900px) {
-    .project-grid {
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    }
-}
-
-@media (max-width: 768px) {
-    .site-title {
-        padding-top: 1.5rem;
-    }
-    .hero {
-        min-height: auto;
-        padding: 2rem 1.5rem;
-    }
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 600px) {
     nav {
         padding: 0.5rem 0.8rem;
-        gap: 0.2rem;
-    }
-    nav::before {
-        display: none;
+        gap: 0.1rem;
     }
     nav a {
-        font-size: 0.75rem;
-        padding: 0.4rem 0.6rem;
-        border: 1px solid var(--border);
-        flex: 1 1 40%;
-        text-align: center;
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
     }
     main {
         padding: 2rem 1rem;
     }
     .hero {
         padding: 1.5rem;
+    }
+    .project-grid {
+        grid-template-columns: 1fr;
     }
 }
