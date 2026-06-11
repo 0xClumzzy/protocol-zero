@@ -35,7 +35,7 @@ body {
     background-color: var(--bg);
     color: var(--light);
     font-family: "Share Tech Mono", monospace;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.7;
     min-height: 100vh;
     position: relative;
@@ -409,8 +409,8 @@ a:hover {
 
 .project-card p {
     color: var(--mid);
-    font-size: 0.3rem;
-    line-height: 1.7;
+    font-size: 0.2rem;
+    line-height: 1.5;
     letter-spacing: normal;
 }
 
