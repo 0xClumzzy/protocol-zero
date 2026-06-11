@@ -414,7 +414,7 @@ a:hover {
     margin-bottom: 0.5rem;
 }
 
-.project-card p {
+.project-card pre {
     color: var(--mid);
     font-size: 0.5rem;
     line-height: 1.7;
@@ -468,7 +468,7 @@ a:hover {
     text-decoration-color: var(--red);
 }
 
-.grave-item p {
+.grave-item pre {
     font-size: 0.78rem;
 }
 
