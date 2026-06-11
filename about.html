@@ -75,31 +75,6 @@
                 font-size: 0.8rem;
                 color: #9fef00;
                 margin-left: 0.2rem;
-                display: inline-block;
-            }
-
-            @media (max-width: 768px) {
-                .htb-card {
-                    padding: 1.2rem;
-                }
-                .htb-stats {
-                    flex-wrap: wrap;
-                    gap: 1rem;
-                }
-                .stat-item {
-                    flex: 1 1 40%;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .stat-item {
-                    flex: 1 1 100%;
-                    border-bottom: 1px solid rgba(159, 239, 0, 0.1);
-                    padding-bottom: 0.5rem;
-                }
-                .stat-item:last-child {
-                    border-bottom: none;
-                }
             }
         </style>
     </head>
@@ -107,6 +82,11 @@
         <header>
             <div class="site-title flicker" data-text="THE CLUMZZY PROTOCOL">
                 THE CLUMZZY PROTOCOL
+            </div>
+            <div class="mobile-nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             <nav>
                 <a href="index.html"># HOME</a>
@@ -121,6 +101,14 @@
                 <span class="nav-sep">//</span>
                 <a href="graveyard.html">GRAVEYARD</a>
             </nav>
+            <div class="mobile-menu">
+                <a href="index.html"># HOME</a>
+                <a href="skills and conquests.html">PROWESS</a>
+                <a href="projects.html">PROJECTS</a>
+                <a href="about.html">ABOUT</a>
+                <a href="contact.html">CONTACT</a>
+                <a href="graveyard.html">GRAVEYARD</a>
+            </div>
         </header>
 
         <main>
@@ -276,3 +264,4 @@
         <script src="animations.js"></script>
     </body>
 </html>
+
