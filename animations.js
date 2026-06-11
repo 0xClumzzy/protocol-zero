@@ -66,7 +66,28 @@
     }
   });
 
-  /* ── 5. Cursor blink — only on elements with .cursor ── */
+  /* ── 5. Mobile Menu Toggle ── */
+  const menuToggle = document.querySelector('.mobile-nav-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  /* ── 6. Cursor blink — only on elements with .cursor ── */
   /* handled purely in CSS, nothing to do here */
 
 })();
