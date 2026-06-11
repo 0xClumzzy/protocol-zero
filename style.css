@@ -369,7 +369,7 @@ a:hover {
 /*  PROJECT CARDS  */
 .project-grid {
     display: grid;
-     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1.5fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -462,7 +462,7 @@ a:hover {
 }
 
 .grave-item p {
-    font-size: 0.5rem;
+    font-size: 0.78rem;
 }
 
 /*  CONTACT  */
