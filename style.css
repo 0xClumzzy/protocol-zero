@@ -370,7 +370,7 @@ a:hover {
 /*  PROJECT CARDS  */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1.5fr);
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
