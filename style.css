@@ -410,9 +410,9 @@ a:hover {
 
 .project-card p {
     color: var(--mid);
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     line-height: 1.7;
-    letter-spacing: normal;
+    letter-spacing: 0.2rem;
 }
 
 .project-card .status {
