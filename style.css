@@ -369,8 +369,8 @@ a:hover {
 /*  PROJECT CARDS  */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+    gap: 1.6rem;
     margin-top: 1.5rem;
 }
 
@@ -409,7 +409,7 @@ a:hover {
 
 .project-card p {
     color: var(--mid);
-    font-size: 0.5rem;
+    font-size: 0.3rem;
     line-height: 1.7;
     letter-spacing: normal;
 }
