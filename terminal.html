@@ -83,10 +83,14 @@
 
             <hr class="glyph" />
 
-            <section>
-                <h3 class="page-heading" style="font-size: 1.8rem">AVAILABLE COMMANDS</h3>
+            <section id="commands-section">
+                <div class="section-header">
+                    <h3 class="page-heading" style="font-size: 1.8rem; margin-bottom: 0;">AVAILABLE COMMANDS</h3>
+                    <button class="section-toggle" id="commands-toggle-btn">[ MINIMIZE ]</button>
+                </div>
                 <div class="rule"></div>
-                <div class="project-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+                <div class="collapsible-content" id="commands-content">
+                    <div class="project-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
                     <div class="project-card">
                         <h3>HELP</h3>
                         <p>Show all available commands with descriptions</p>

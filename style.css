@@ -20,46 +20,36 @@
     --text-light: #d0d0d0;
     --text-white: #eeeeee;
 
-    /* Accent palette — terminal standard colors */
-    --red: #b00020;
-    --red-bright: #e03030;
-    --red-dim: #600010;
-    --red-glow: rgba(224, 48, 48, 0.15);
+    /* Semantic palette — only palette — terminal standard colors */
+    --accent: #e03030;
+    --accent-dim: #600010;
+    --accent-glow: rgba(224, 48, 48, 0.15);
 
-    --green: #00b040;
-    --green-bright: #30e060;
-    --green-dim: #006020;
-    --green-glow: rgba(48, 224, 96, 0.15);
+    /* Red aliases (legacy compatibility) */
+    --red: var(--accent);
+    --red-bright: var(--accent);
+    --red-dim: var(--accent-dim);
+    --red-glow: var(--accent-glow);
 
-    --amber: #cc8800;
-    --amber-bright: #ffaa00;
-    --amber-dim: #664400;
-    --amber-glow: rgba(255, 170, 0, 0.15);
+    --success: #30e060;
+    --success-dim: #006020;
+    --success-glow: rgba(48, 224, 96, 0.15);
 
-    --cyan: #00a0c0;
-    --cyan-bright: #40d0f0;
-    --cyan-dim: #005060;
-    --cyan-glow: rgba(64, 208, 240, 0.15);
+    --warning: #ffaa00;
+    --warning-dim: #664400;
+    --warning-glow: rgba(255, 170, 0, 0.15);
 
-    --blue: #4060e0;
-    --blue-bright: #7090ff;
-    --blue-dim: #203070;
-    --blue-glow: rgba(112, 144, 255, 0.15);
+    --info: #40d0f0;
+    --info-dim: #005060;
+    --info-glow: rgba(64, 208, 240, 0.15);
 
-    --purple: #8040c0;
-    --purple-bright: #b070f0;
-    --purple-dim: #402060;
-    --purple-glow: rgba(176, 112, 240, 0.15);
+    --primary: #7090ff;
+    --primary-dim: #203070;
+    --primary-glow: rgba(112, 144, 255, 0.15);
 
-    /* Semantic aliases */
-    --accent: var(--red-bright);
-    --accent-glow: var(--red-glow);
-    --success: var(--green-bright);
-    --success-glow: var(--green-glow);
-    --warning: var(--amber-bright);
-    --warning-glow: var(--amber-glow);
-    --info: var(--cyan-bright);
-    --info-glow: var(--cyan-glow);
+    --accent-alt: #b070f0;
+    --accent-alt-dim: #402060;
+    --accent-alt-glow: rgba(176, 112, 240, 0.15);
 
     /* Effects */
     --glow: rgba(224, 48, 48, 0.08);
