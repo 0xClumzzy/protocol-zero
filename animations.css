@@ -111,7 +111,7 @@ footer {
 
 /* Override previous ::after used for outline ghost */
 .site-title::after {
-    color: var(--white);
+    color: var(--text-white);
     -webkit-text-stroke: 0;
     text-shadow: -3px 0 var(--red-bright);
     opacity: 0;
@@ -119,8 +119,8 @@ footer {
 }
 
 .site-title::before {
-    color: var(--white);
-    text-shadow: 3px 0 var(--mid);
+    color: var(--text-white);
+    text-shadow: 3px 0 var(--text-muted);
     opacity: 0;
     animation: glitch-before 7s infinite step-end;
 }
@@ -254,7 +254,7 @@ footer {
 
 /* Hover: subtle lift + red edge glow */
 .project-card:hover {
-    border-color: var(--muted);
+    border-color: var(--text-muted);
     transform: translateY(-3px);
     box-shadow:
         0 0 0 1px var(--red),
