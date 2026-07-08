@@ -446,45 +446,6 @@
                 animation: scanSweep 5s ease-in-out infinite;
             }
 
-            /* ── COLLAPSIBLE SECTION ── */
-            .section-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 0.5rem;
-            }
-
-            .section-toggle {
-                background: transparent;
-                border: 1px solid var(--border);
-                color: var(--mid);
-                font-family: "Share Tech Mono", monospace;
-                font-size: 0.7rem;
-                padding: 0.25rem 0.6rem;
-                cursor: pointer;
-                transition: all 0.2s;
-                letter-spacing: 0.1em;
-            }
-
-            .section-toggle:hover {
-                color: var(--white);
-                border-color: var(--accent-bright);
-                background: rgba(204, 34, 0, 0.1);
-            }
-
-            .collapsible-content {
-                max-height: 5000px;
-                opacity: 1;
-                overflow: hidden;
-                transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
-            }
-
-            .collapsible-content.minimized {
-                max-height: 0;
-                opacity: 0;
-                pointer-events: none;
-            }
-
             @media (max-width: 600px) {
                 .skill-row {
                     grid-template-columns: 120px 1fr 40px;

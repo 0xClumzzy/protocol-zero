@@ -166,28 +166,37 @@
             <hr class="glyph" />
 
             <section>
-                <h3 class="page-heading" style="font-size: 1.8rem">MISSION</h3>
-                <div class="rule"></div>
-                <div class="terminal-line">
-                    <span class="prompt">objective:</span>
+                <div class="section-header">
+                    <h3 class="page-heading" style="font-size: 1.8rem">MISSION</h3>
+                    <button class="section-toggle" data-toggle="about-mission">[ MINIMIZE ]</button>
                 </div>
-                <br />
-                <p>
-                    This site serves as everything you need to know in order to
-                    work with me. That goes for my projects, what I do, and
-                    whatever the hell else you want to know.
-                </p>
-                <br />
-                <a href="projects.html" class="btn">VIEW THE VAULT</a>
+                <div class="rule"></div>
+                <div class="collapsible-content" id="about-mission">
+                    <div class="terminal-line">
+                        <span class="prompt">objective:</span>
+                    </div>
+                    <br />
+                    <p>
+                        This site serves as everything you need to know in order to
+                        work with me. That goes for my projects, what I do, and
+                        whatever the hell else you want to know.
+                    </p>
+                    <br />
+                    <a href="projects.html" class="btn">VIEW THE VAULT</a>
+                </div>
             </section>
 
             <hr class="glyph" />
 
             <section class="htb-section">
-                <h3 class="page-heading" style="font-size: 1.8rem">
-                    OPERATIONAL STATUS
-                </h3>
+                <div class="section-header">
+                    <h3 class="page-heading" style="font-size: 1.8rem">
+                        OPERATIONAL STATUS
+                    </h3>
+                    <button class="section-toggle" data-toggle="about-htb">[ MINIMIZE ]</button>
+                </div>
                 <div class="rule"></div>
+                <div class="collapsible-content" id="about-htb">
                 <div class="terminal-line">
                     <span class="prompt">platform:</span>
                     <span class="out">HACK THE BOX</span>
@@ -254,6 +263,7 @@
                         rel="noopener"
                         >↗ VIEW FULL PROFILE</a
                     >
+                    </div>
                 </div>
             </section>
         </main>

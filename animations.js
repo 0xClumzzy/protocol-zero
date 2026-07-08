@@ -109,7 +109,28 @@
     });
   }
 
-  /* ── 6. Cursor blink — only on elements with .cursor ── */
+  /* ── 6. Section minimize toggles ── */
+  document.querySelectorAll('.section-toggle[data-toggle]').forEach(btn => {
+    const targetId = btn.getAttribute('data-toggle');
+    const content = document.getElementById(targetId);
+    if (!content) return;
+
+    // Persist state to sessionStorage
+    const storageKey = 'toggle-' + targetId;
+    const saved = sessionStorage.getItem(storageKey);
+    if (saved === 'minimized') {
+      content.classList.add('minimized');
+      btn.textContent = '[ EXPAND ]';
+    }
+
+    btn.addEventListener('click', () => {
+      const isMinimized = content.classList.toggle('minimized');
+      btn.textContent = isMinimized ? '[ EXPAND ]' : '[ MINIMIZE ]';
+      sessionStorage.setItem(storageKey, isMinimized ? 'minimized' : 'expanded');
+    });
+  });
+
+  /* ── 7. Cursor blink — only on elements with .cursor ── */
   /* handled purely in CSS, nothing to do here */
 
 })();
