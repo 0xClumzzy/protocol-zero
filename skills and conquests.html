@@ -1036,6 +1036,10 @@
             const writeupContent = document.getElementById('writeup-content');
 
             if (writeupToggle && writeupContent) {
+                // Default to minimized
+                writeupContent.classList.add('minimized');
+                writeupToggle.textContent = '[ EXPAND ]';
+
                 writeupToggle.addEventListener('click', () => {
                     const isMinimized = writeupContent.classList.toggle('minimized');
                     writeupToggle.textContent = isMinimized ? '[ EXPAND ]' : '[ MINIMIZE ]';

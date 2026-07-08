@@ -115,10 +115,13 @@
     const content = document.getElementById(targetId);
     if (!content) return;
 
-    // Persist state to sessionStorage
     const storageKey = 'toggle-' + targetId;
     const saved = sessionStorage.getItem(storageKey);
-    if (saved === 'minimized') {
+
+    if (saved === 'expanded') {
+      content.classList.remove('minimized');
+      btn.textContent = '[ MINIMIZE ]';
+    } else {
       content.classList.add('minimized');
       btn.textContent = '[ EXPAND ]';
     }
