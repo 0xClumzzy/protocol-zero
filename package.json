@@ -1,0 +1,22 @@
+{
+  "name": "protocol-zero",
+  "version": "2.0.0",
+  "description": "Protocol Zero - Terminal-themed cybersecurity portfolio",
+  "private": true,
+  "scripts": {
+    "validate:html": "html-validate --ext .html .",
+    "lint:css": "stylelint \"**/*.css\"",
+    "lint:js": "eslint animations.js",
+    "lint": "npm run lint:css && npm run lint:js",
+    "validate": "npm run validate:html && npm run lint"
+  },
+  "devDependencies": {
+    "html-validate": "^8.0.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

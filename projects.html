@@ -7,32 +7,54 @@
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="animations.css" />
     </head>
-    <body>
+<body>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
         <header>
             <div class="site-title flicker" data-text="THE VAULT PROTOCOL">
                 THE VAULT PROTOCOL
             </div>
-            <div class="mobile-nav-toggle">
+            <div class="mobile-nav-toggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <nav>
+            <nav id="main-nav" aria-label="Main navigation">
                 <a href="index.html"># HOME</a>
                 <span class="nav-sep">//</span>
                 <a href="skills and conquests.html">PROWESS</a>
                 <span class="nav-sep">//</span>
-                <a href="projects.html" class="active">PROJECTS</a>
+                <a href="projects.html" class="active" aria-current="page">PROJECTS</a>
                 <span class="nav-sep">//</span>
                 <a href="about.html">ABOUT</a>
                 <span class="nav-sep">//</span>
                 <a href="contact.html">CONTACT</a>
                 <span class="nav-sep">//</span>
                 <a href="graveyard.html">GRAVEYARD</a>
-                   
+                <span class="nav-sep">//</span>
+                <a href="resume.html">RESUME</a>
+                <span class="nav-sep">//</span>
+                <a href="changelog.html">CHANGELOG</a>
+                <span class="nav-sep">//</span>
+                <a href="terminal.html">TERMINAL</a>
+            </nav>
+            <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+                <a href="index.html"># HOME</a>
+                <a href="about.html">ABOUT</a>
+                <a href="projects.html" aria-current="page">PROJECTS</a>
+                <a href="skills and conquests.html">PROWESS</a>
+                <a href="contact.html">CONTACT</a>
+                <a href="graveyard.html">GRAVEYARD</a>
+                <a href="resume.html">RESUME</a>
+                <a href="changelog.html">CHANGELOG</a>
+                <a href="terminal.html">TERMINAL</a>
+            </div>
+                <a href="terminal.html">TERMINAL</a>
+                <span class="nav-sep">//</span>
+                <a href="terminal.html">TERMINAL</a>
+            </div>
         </header>
 
-        <main>
+        <main id="main-content">
             <section>
                 <h1 class="page-heading">WELCOME TO THE VAULT</h1>
                 <div class="rule"></div>
