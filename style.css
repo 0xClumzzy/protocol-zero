@@ -98,7 +98,7 @@ body {
         var(--bg);
     color: var(--text-light);
     font-family: "Share Tech Mono", monospace;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.75;
     min-height: 100vh;
     position: relative;
@@ -196,7 +196,7 @@ nav a {
     color: var(--text-muted);
     text-decoration: none;
     font-family: "Share Tech Mono", monospace;
-    font-size: 0.82rem;
+    font-size: 0.95rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     padding: 0.35rem 0.8rem;
@@ -322,7 +322,7 @@ section p,
 section pre {
     color: var(--text-mid);
     font-family: "Share Tech Mono", monospace;
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     line-height: 1.9;
     white-space: pre-wrap;
     word-break: break-word;
@@ -415,7 +415,7 @@ a:hover {
     background: transparent;
     color: var(--text-light);
     font-family: "Share Tech Mono", monospace;
-    font-size: 0.85rem;
+    font-size: 1rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -494,7 +494,7 @@ a:hover {
 
 .project-card pre {
     color: var(--text-mid);
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     line-height: 1.7;
     letter-spacing: normal;
 }
@@ -502,7 +502,7 @@ a:hover {
 .project-card .status {
     display: inline-block;
     margin-top: 0.8rem;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     padding: 0.2rem 0.6rem;
@@ -547,7 +547,7 @@ a:hover {
 }
 
 .grave-item pre {
-    font-size: 0.78rem;
+    font-size: 0.95rem;
 }
 
 /*  CONTACT  */
@@ -588,7 +588,7 @@ a:hover {
 /*  TERMINAL PROMPT  */
 .terminal-line {
     font-family: "VT323", monospace;
-    font-size: 1.1rem;
+    font-size: 1.35rem;
     color: var(--text-mid);
     margin: 0.4rem 0;
 }
@@ -615,7 +615,7 @@ footer {
 footer p {
     color: var(--text-muted);
     font-family: "Share Tech Mono", monospace;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     letter-spacing: 0.2em;
 }
 
@@ -643,7 +643,7 @@ hr.glyph {
     text-align: center;
     color: var(--text-muted);
     font-family: "VT323", monospace;
-    font-size: 1.1rem;
+    font-size: 1.35rem;
     letter-spacing: 0.4em;
     margin: 2rem 0;
 }
@@ -661,7 +661,7 @@ hr.glyph::before {
     color: var(--text-white);
     padding: 0.75rem 1.5rem;
     font-family: "Share Tech Mono", monospace;
-    font-size: 0.85rem;
+    font-size: 1rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     z-index: 10000;
@@ -730,7 +730,9 @@ hr.glyph::before {
     cursor: pointer;
     padding: 0;
     z-index: 1001;
-    position: relative;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
 }
 
 .mobile-nav-toggle span {
@@ -796,7 +798,7 @@ hr.glyph::before {
 
 .mobile-menu a {
     font-family: "Share Tech Mono", monospace;
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-mid);
@@ -1033,7 +1035,7 @@ img:not(.htb-badge-img):not(.profile-img):hover {
     border: 1px solid var(--glass-border-bright);
     border-radius: 4px;
     font-family: "VT323", monospace;
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1.6;
     max-height: 60vh;
     display: flex;
@@ -1105,7 +1107,7 @@ img:not(.htb-badge-img):not(.profile-img):hover {
     outline: none;
     color: var(--text-white);
     font-family: "VT323", monospace;
-    font-size: 1rem;
+    font-size: 1.25rem;
     line-height: 1.6;
     caret-color: var(--text-white);
 }
@@ -1165,7 +1167,7 @@ img:not(.htb-badge-img):not(.profile-img):hover {
     }
     
     .terminal-input-line .prompt {
-        font-size: 0.85rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -1173,9 +1175,6 @@ img:not(.htb-badge-img):not(.profile-img):hover {
 @media (max-width: 768px) {
     .mobile-nav-toggle {
         display: flex;
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
     }
 
     header nav {
@@ -1184,29 +1183,11 @@ img:not(.htb-badge-img):not(.profile-img):hover {
 
     .site-title {
         padding-right: 50px;
-    }
-}
-
-@media (max-width: 480px) {
-    .mobile-nav-toggle {
-        top: 1rem;
-        right: 1rem;
-    }
-}
-@media (max-width: 768px) {
-    .mobile-nav-toggle {
-        display: flex;
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
+        padding: 2.5rem 1rem 1rem;
     }
 
     header {
         padding: 0;
-    }
-
-    .site-title {
-        padding: 2.5rem 1rem 1rem;
     }
 
     nav {
@@ -1267,16 +1248,21 @@ img:not(.htb-badge-img):not(.profile-img):hover {
     }
 
     .terminal-line {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .btn {
         padding: 0.8rem 1.5rem;
-        font-size: 0.8rem;
+        font-size: 0.95rem;
     }
 }
 
 @media (max-width: 480px) {
+    .mobile-nav-toggle {
+        top: 1rem;
+        right: 1rem;
+    }
+
     .site-title {
         font-size: clamp(1.8rem, 7vw, 3rem);
     }
@@ -1304,7 +1290,7 @@ img:not(.htb-badge-img):not(.profile-img):hover {
     border: 1px solid var(--border);
     color: var(--text-mid);
     font-family: "Share Tech Mono", monospace;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     padding: 0.25rem 0.6rem;
     cursor: pointer;
     transition: all 0.2s;
