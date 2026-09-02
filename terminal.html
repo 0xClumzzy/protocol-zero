@@ -31,8 +31,6 @@
                 <span class="nav-sep">//</span>
                 <a href="graveyard.html">GRAVEYARD</a>
                 <span class="nav-sep">//</span>
-                <a href="resume.html">RESUME</a>
-                <span class="nav-sep">//</span>
                 <a href="changelog.html">CHANGELOG</a>
                 <span class="nav-sep">//</span>
                 <a href="terminal.html" class="active" aria-current="page">TERMINAL</a>
@@ -44,7 +42,6 @@
                 <a href="skills and conquests.html">PROWESS</a>
                 <a href="contact.html">CONTACT</a>
                 <a href="graveyard.html">GRAVEYARD</a>
-                <a href="resume.html">RESUME</a>
                 <a href="changelog.html">CHANGELOG</a>
                 <a href="terminal.html" aria-current="page">TERMINAL</a>
             </div>
@@ -67,11 +64,11 @@
                     <div id="terminal-output" class="terminal-output" aria-live="polite" aria-atomic="false"></div>
                     <div class="terminal-input-line">
                         <span class="prompt" aria-hidden="true">root@protocol-zero@p0:~$</span>
-                        <input 
-                            type="text" 
-                            id="terminal-input" 
-                            class="terminal-input" 
-                            autocomplete="off" 
+                        <input
+                            type="text"
+                            id="terminal-input"
+                            class="terminal-input"
+                            autocomplete="off"
                             spellcheck="false"
                             aria-label="Command input"
                             placeholder="Type a command..."
@@ -85,7 +82,7 @@
 
             <section id="commands-section">
                 <div class="section-header">
-                    <h3 class="page-heading" style="font-size: 1.8rem; margin-bottom: 0;">AVAILABLE COMMANDS</h3>
+                    <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem); margin-bottom: 0;">AVAILABLE COMMANDS</h3>
                     <button class="section-toggle" id="commands-toggle-btn" data-toggle="commands-content">[ MINIMIZE ]</button>
                 </div>
                 <div class="rule"></div>
@@ -113,7 +110,7 @@
                         <h3>CAT</h3>
                         <p>Display file contents</p>
                         <br />
-                        <code style="color: var(--accent-bright);">cat <file></code>
+                        <code style="color: var(--accent-bright);">cat &lt;file&gt;</code>
                     </div>
                     <div class="project-card">
                         <h3>PS</h3>
@@ -125,7 +122,7 @@
                         <h3>NMAP</h3>
                         <p>Simulated port scan</p>
                         <br />
-                        <code style="color: var(--accent-bright);">nmap <target></code>
+                        <code style="color: var(--accent-bright);">nmap &lt;target&gt;</code>
                     </div>
                     <div class="project-card">
                         <h3>HTB</h3>
@@ -164,12 +161,13 @@
                         <code style="color: var(--accent-bright);">neofetch</code>
                     </div>
                 </div>
+                </div>
             </section>
 
             <hr class="glyph" />
 
             <section>
-                <h3 class="page-heading" style="font-size: 1.8rem">FILESYSTEM STRUCTURE</h3>
+                <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem)">FILESYSTEM STRUCTURE</h3>
                 <div class="rule"></div>
                 <pre style="color: var(--mid); font-size: 0.8rem; line-height: 1.8;">
 /home/zero
@@ -197,7 +195,7 @@
 
             <section style="text-align: center;">
                 <p class="text-muted" style="font-size: 0.85rem;">
-                    This is a simulated terminal for demonstration. 
+                    This is a simulated terminal for demonstration.
                     <a href="https://github.com/0XClumzzy/zzyutil" target="_blank" rel="noopener">Real tools live in zzyutil</a>.
                 </p>
             </section>
@@ -477,7 +475,7 @@
                     }
 
                     matrixInterval = setInterval(addMatrixLine, 100);
-                    
+
                     // Allow Ctrl+C to stop
                     const stopHandler = (e) => {
                         if (e.ctrlKey && e.key === 'c') {

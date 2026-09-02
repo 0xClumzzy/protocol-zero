@@ -109,18 +109,18 @@ footer {
     opacity: 0;
 }
 
-/* Override previous ::after used for outline ghost */
+/* Override .site-title::after used for outline ghost */
 .site-title::after {
     color: var(--text-white);
     -webkit-text-stroke: 0;
-    text-shadow: -3px 0 var(--red-bright);
+    text-shadow: -3px 0 var(--accent-bright);
     opacity: 0;
     animation: glitch-after 7s infinite step-end;
 }
 
 .site-title::before {
     color: var(--text-white);
-    text-shadow: 3px 0 var(--text-muted);
+    text-shadow: 3px 0 var(--accent);
     opacity: 0;
     animation: glitch-before 7s infinite step-end;
 }
@@ -185,22 +185,24 @@ footer {
     }
 }
 
-.terminal-line {
+/* Type effect only where it is safe (short single-line prompts).
+   Long content must wrap, so we only clip in the hero. */
+.hero .terminal-line {
     overflow: hidden;
     white-space: nowrap;
 }
 
-/* Each terminal line reveals in sequence */
-.terminal-line:nth-child(1) {
+/* Each hero terminal line reveals in sequence */
+.hero .terminal-line:nth-child(1) {
     animation: typeReveal 0.5s steps(30, end) 0.4s both;
 }
-.terminal-line:nth-child(2) {
+.hero .terminal-line:nth-child(2) {
     animation: typeReveal 0.5s steps(30, end) 0.85s both;
 }
-.terminal-line:nth-child(3) {
+.hero .terminal-line:nth-child(3) {
     animation: typeReveal 0.5s steps(30, end) 1.3s both;
 }
-.terminal-line:nth-child(4) {
+.hero .terminal-line:nth-child(4) {
     animation: typeReveal 0.5s steps(30, end) 1.75s both;
 }
 
@@ -300,7 +302,7 @@ nav a::after {
     left: 0;
     width: 100%;
     height: 1px;
-    background: var(--text-white);
+    background: var(--accent-bright);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.25s ease;
@@ -326,12 +328,13 @@ nav a::before {
     z-index: 0;
 }
 
-/* Red fill sweep (left to right) */
+/* Purple fill sweep (left to right) */
 .btn::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+    opacity: 0.16;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -400,5 +403,16 @@ nav a::before {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+/*
+   11. SMALL SCREENS — drop the typewriter clip, let text wrap
+   */
+@media (max-width: 600px) {
+    .hero .terminal-line {
+        overflow: visible;
+        white-space: normal;
+        animation: none !important;
     }
 }

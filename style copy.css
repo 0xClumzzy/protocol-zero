@@ -256,25 +256,6 @@ main {
     padding: 3rem 1.5rem;
 }
 
-/* Text-integrity fallback: never let long unbroken tokens clip sideways */
-code,
-pre,
-p,
-li,
-h1,
-h2,
-h3,
-a,
-span,
-.terminal-line,
-.terminal-output-line {
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
-}
-
 /*  SECTION HEADERS  */
 .page-heading {
     font-family: "Bebas Neue", sans-serif;

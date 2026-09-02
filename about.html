@@ -11,9 +11,9 @@
                 margin-top: 2rem;
             }
             .htb-card {
-                background: #0d0d0d;
+                background: var(--surface);
                 border: 1px solid var(--border);
-                border-left: 3px solid #9fef00; /* HTB Green */
+                border-left: 3px solid var(--accent-bright);
                 padding: 1.5rem;
                 display: flex;
                 flex-direction: column;
@@ -28,7 +28,7 @@
                 right: 0.8rem;
                 font-family: "VT323", monospace;
                 font-size: 0.7rem;
-                color: #9fef00;
+                color: var(--accent-bright);
                 opacity: 0.6;
             }
             .htb-badge-img {
@@ -39,21 +39,22 @@
                 margin: 0;
             }
             .htb-card .btn-htb {
-                border-color: #9fef00;
-                color: #9fef00;
+                border-color: var(--accent-bright);
+                color: var(--accent-bright);
             }
             .htb-card .btn-htb:hover {
-                background: rgba(159, 239, 0, 0.1);
-                box-shadow: 0 0 15px rgba(159, 239, 0, 0.2);
+                background: rgba(255, 255, 255, 0.1);
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
             }
 
             /* Flag Styles */
             .htb-stats {
                 display: flex;
+                flex-wrap: wrap;
                 gap: 1.5rem;
                 margin-top: 0.5rem;
                 padding-top: 1rem;
-                border-top: 1px dashed rgba(159, 239, 0, 0.2);
+                border-top: 1px dashed rgba(255, 255, 255, 0.2);
             }
             .stat-item {
                 display: flex;
@@ -61,7 +62,7 @@
             }
             .stat-label {
                 font-size: 0.65rem;
-                color: #9fef00;
+                color: var(--accent-bright);
                 opacity: 0.7;
                 letter-spacing: 0.1em;
             }
@@ -73,7 +74,7 @@
             }
             .stat-value span {
                 font-size: 0.8rem;
-                color: #9fef00;
+                color: var(--accent-bright);
                 margin-left: 0.2rem;
             }
         </style>
@@ -91,100 +92,30 @@
             <nav>
                 <a href="index.html"># HOME</a>
                 <span class="nav-sep">//</span>
+                <a href="about.html" class="active" aria-current="page">ABOUT</a>
+                <span class="nav-sep">//</span>
                 <a href="projects.html">PROJECTS</a>
+                <span class="nav-sep">//</span>
+                <a href="skills and conquests.html">PROWESS</a>
+                <span class="nav-sep">//</span>
+                <a href="graveyard.html">GRAVEYARD</a>
                 <span class="nav-sep">//</span>
                 <a href="contact.html">CONTACT</a>
             </nav>
             <div class="mobile-menu">
                 <a href="index.html"># HOME</a>
-                <a href="skills and conquests.html">PROWESS</a>
-                <a href="projects.html">PROJECTS</a>
                 <a href="about.html">ABOUT</a>
-                <a href="contact.html">CONTACT</a>
+                <a href="projects.html">PROJECTS</a>
+                <a href="skills and conquests.html">PROWESS</a>
                 <a href="graveyard.html">GRAVEYARD</a>
+                <a href="contact.html">CONTACT</a>
             </div>
         </header>
 
         <main>
-            <section>
-                <h1 class="page-heading">WHO AM I!?</h1>
-                <div class="rule"></div>
-                <div
-                    style="
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 2rem;
-                        align-items: flex-start;
-                    "
-                >
-                    <img
-                        src="images/fpr.png"
-                        alt="Founder"
-                        class="profile-img"
-                    />
-                    <div>
-                        <div class="terminal-line">
-                            <span class="prompt">identity:</span>
-                            <span class="out"
-                                >CTF PLAYER. STUDENT. MENTOR. DUDE.</span
-                            >
-                        </div>
-                        <div class="terminal-line">
-                            <span class="prompt">Names:</span>
-                            <span class="out">Mr Theo Kufigwa</span>
-                        </div>
-                        <div class="terminal-line">
-                            <span class="prompt">threat_level:</span>
-                            <span class="out">ZERO</span>
-                        </div>
-                        <div class="terminal-line">
-                            <span class="prompt">status:</span>
-                            <span class="out">CHILL ■</span>
-                        </div>
-                        <br />
-                        <pre>
-                            Theo Kufigwa here....
-
-                            -- An undergraduate from Botho
-                            University
-
-                            -- Cyber security enthusiast
-
-                            -- The founder of Protocol Zero, building things, breaking things, and
-                                figuring it all out along the way.
-                        </pre>
-                    </div>
-                </div>
-            </section>
-
-            <hr class="glyph" />
-
-            <section>
-                <div class="section-header">
-                    <h3 class="page-heading" style="font-size: 1.8rem">MISSION</h3>
-                    <button class="section-toggle" data-toggle="about-mission">[ MINIMIZE ]</button>
-                </div>
-                <div class="rule"></div>
-                <div class="collapsible-content" id="about-mission">
-                    <div class="terminal-line">
-                        <span class="prompt">objective:</span>
-                    </div>
-                    <br />
-                    <p>
-                        This site serves as everything you need to know in order to
-                        work with me. That goes for my projects, what I do, and
-                        whatever the hell else you want to know.
-                    </p>
-                    <br />
-                    <a href="projects.html" class="btn">VIEW THE VAULT</a>
-                </div>
-            </section>
-
-            <hr class="glyph" />
-
             <section class="htb-section">
                 <div class="section-header">
-                    <h3 class="page-heading" style="font-size: 1.8rem">
+                    <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem)">
                         OPERATIONAL STATUS
                     </h3>
                     <button class="section-toggle" data-toggle="about-htb">[ MINIMIZE ]</button>
@@ -198,7 +129,7 @@
                 <br />
                 <div class="htb-card">
                     <p style="font-size: 0.8rem; margin-bottom: 0.5rem">
-                        CONNECTED TO HTB=> // SESSION: ACTIVE
+                        CONNECTED TO HTB=&gt; // SESSION: ACTIVE
                     </p>
 
                     <div
@@ -257,7 +188,287 @@
                         rel="noopener"
                         >↗ VIEW FULL PROFILE</a
                     >
+                </div>
+                </div>
+            </section>
+
+            <hr class="glyph" />
+
+            <section>
+                <h1 class="page-heading">WHO AM I!?</h1>
+                <div class="rule"></div>
+                <div
+                    style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 2rem;
+                        align-items: flex-start;
+                    "
+                >
+                    <img
+                        src="images/fpr.png"
+                        alt="Founder"
+                        class="profile-img"
+                    />
+                    <div>
+                        <div class="terminal-line">
+                            <span class="prompt">identity:</span>
+                            <span class="out"
+                                >CTF PLAYER. STUDENT. MENTOR. DUDE.</span
+                            >
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">Names:</span>
+                            <span class="out">Theo Kufigwa</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">classification:</span>
+                            <span class="out"
+                                >UNCLASSIFIED</span
+                            >
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">role:</span>
+                            <span class="out"
+                                >CYBER SECURITY STUDENT // CTF PLAYER // DEVELOPER</span
+                            >
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">status:</span>
+                            <span class="out">ACTIVE OPERATIONS ■</span>
+                        </div>
+                        <br />
+                        <div
+                            style="
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 1rem;
+                                margin-top: 1rem;
+                            "
+                        >
+                            <a
+                                href="assets/theo-kufigwa-resume.pdf"
+                                class="btn"
+                                download
+                                >↓ DOWNLOAD RESUME (PDF)</a
+                            >
+                            <a
+                                href="https://github.com/0XClumzzy"
+                                class="btn"
+                                target="_blank"
+                                rel="noopener"
+                                >↗ VIEW GITHUB</a
+                            >
+                        </div>
                     </div>
+                </div>
+            </section>
+
+            <hr class="glyph" />
+
+            <section>
+                <div class="section-header">
+                    <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem)">OBJECTIVE</h3>
+                    <button class="section-toggle" data-toggle="about-mission">[ MINIMIZE ]</button>
+                </div>
+                <div class="rule"></div>
+                <div class="collapsible-content" id="about-mission">
+                    <div class="terminal-line">
+                        <span class="prompt">breifing:</span>
+                    </div>
+                        This site serves as everything you need to know in order to
+                        work with me.
+                    <ul>
+                        <li>
+                            That goes for my projects, what I do, and
+                            whatever the hell else you want to know.
+                        </li>
+                    </ul>
+                    <br />
+                    <a href="projects.html" class="btn">VIEW THE VAULT</a>
+                </div>
+            </section>
+
+            <hr class="glyph" />
+
+            <hr class="glyph" />
+
+            <section>
+                <div class="section-header">
+                    <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem)">CERTIFICATIONS &amp; TRAINING</h3>
+                    <button class="section-toggle" data-toggle="resume-certs">[ MINIMIZE ]</button>
+                </div>
+                <div class="rule"></div>
+                <div class="collapsible-content" id="resume-certs">
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>HACK THE BOX</h3>
+                        <p>Pro Hacker — 24 User Flags, 21 System Flags</p>
+                        <br />
+                        <span class="status active">● ACTIVE</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>WEBVERSE PRO</h3>
+                        <p>Active learner — completing rooms &amp; paths</p>
+                        <br />
+                        <span class="status active">● ACTIVE</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>COMPTIA SECURITY+</h3>
+                        <p>Planned — targeting Q3 2026</p>
+                        <br />
+                        <span class="status active">● PENDING</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>CWES (HTB)</h3>
+                        <p>Planned</p>
+                        <br />
+                        <span class="status active">● PENDING</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>CPTS (HTB)</h3>
+                        <p>Planned</p>
+                        <br />
+                        <span class="status active">● PENDING</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>OSCP (OFFSEC)</h3>
+                        <p>Long-term goal</p>
+                        <br />
+                        <span class="status active">● PENDING</span>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <hr class="glyph" />
+
+            <section>
+                <div class="section-header">
+                    <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem)">COMPETITIVE HACKING</h3>
+                    <button class="section-toggle" data-toggle="resume-hacking">[ MINIMIZE ]</button>
+                </div>
+                <div class="rule"></div>
+                <div class="collapsible-content" id="resume-hacking">
+                <div class="terminal-line">
+                    <span class="prompt">team:</span>
+                    <span class="out">SOLO / AD-HOC CTF TEAMS</span>
+                </div>
+                <br />
+                <ul class="achievement-list">
+                    <li>TOP 5 — BOCRA CYBERLYMPICS 2026 FINALS</li>
+                    <li>TOP 3 — BOCRA CYBER NATIONAL DRILL</li>
+                    <li>WINNER — SOUTH AFRICA COLLEGE DIVISION: PRIMER CTF 2026</li>
+                </ul>
+                <br />
+                <p style="color: var(--text-muted); font-size: 0.85rem;">
+                    Specializations: Web exploitation, privilege escalation, binary analysis, reverse engineering basics
+                </p>
+                </div>
+            </section>
+
+            <hr class="glyph" />
+
+            <section>
+                <div class="section-header">
+                    <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem)">TECHNICAL STACK</h3>
+                    <button class="section-toggle" data-toggle="resume-stack">[ MINIMIZE ]</button>
+                </div>
+                <div class="rule"></div>
+                <div class="collapsible-content" id="resume-stack">
+                <div class="terminal-line">
+                    <span class="prompt">languages:</span>
+                    <span class="out">Python, Bash, JavaScript/TypeScript, HTML/CSS, Rust (learning), C (basics)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">os:</span>
+                    <span class="out">Linux (Arch, Kali, Ubuntu), Windows (AD/PS)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">tools:</span>
+                    <span class="out">Burp Suite, Nmap, Gobuster, ffuf, Metasploit, BloodHound, Impacket, John, Hashcat, Wireshark, Volatility, Ghidra</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">cloud/devops:</span>
+                    <span class="out">Docker, Git/GitHub Actions, Linux hardening, CI/CD basics</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">frameworks:</span>
+                    <span class="out">MITRE ATT&amp;CK, NIST CSF, OWASP Top 10</span>
+                </div>
+                </div>
+            </section>
+
+            <hr class="glyph" />
+
+            <section>
+                <div class="section-header">
+                    <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem)">KEY PROJECTS</h3>
+                    <button class="section-toggle" data-toggle="resume-projects">[ MINIMIZE ]</button>
+                </div>
+                <div class="rule"></div>
+                <div class="collapsible-content" id="resume-projects">
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>ZZYUTIL</h3>
+                        <p>Cyber tool suite inspired by Linutil — automated hardening, recon, and enumeration scripts</p>
+                        <br />
+                        <a href="https://github.com/0xClumzzy/zzyutil.git" class="btn" target="_blank" rel="noopener">↗ VIEW REPO</a>
+                        <br /><br />
+                        <span class="status active">● ACTIVE</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>PROTOCOL ZERO</h3>
+                        <p>This portfolio site — terminal-themed, hand-coded, deployed on GitHub Pages</p>
+                        <br />
+                        <span class="status active">● ACTIVE</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>PYTHON BOOK FOR CYBER SECURITY</h3>
+                        <p>Beginner-focused book mapping MITRE ATT&amp;CK to practical Python tooling</p>
+                        <br />
+                        <a href="" class="btn" target="_blank" rel="noopener">↗ COMING SOON</a>
+                        <br /><br />
+                        <span class="status active">● PENDING</span>
+                    </div>
+                    <div class="project-card">
+                        <h3>CYBER HUB</h3>
+                        <p>Productivity dashboard for CTF players &amp; security students</p>
+                        <br />
+                        <a href="" class="btn" target="_blank" rel="noopener">↗ COMING SOON</a>
+                        <br /><br />
+                        <span class="status active">● PENDING</span>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <hr class="glyph" />
+
+            <section>
+                <div class="section-header">
+                    <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem)">CONTACT</h3>
+                    <button class="section-toggle" data-toggle="resume-contact">[ MINIMIZE ]</button>
+                </div>
+                <div class="rule"></div>
+                <div class="collapsible-content" id="resume-contact">
+                <div class="contact-block">
+                    <div>
+                        <p class="text-muted" style="font-size: 0.75rem; letter-spacing: 0.1em">// EMAIL</p>
+                        <br />
+                        <a href="mailto:clumzzysec@gmail.com" class="btn">↗ clumzzysec@gmail.com</a>
+                    </div>
+                    <div>
+                        <p class="text-muted" style="font-size: 0.75rem; letter-spacing: 0.1em">// GITHUB</p>
+                        <br />
+                        <a href="https://github.com/0XClumzzy" class="btn" target="_blank" rel="noopener">↗ 0XClumzzy</a>
+                    </div>
+                    <div>
+                        <p class="text-muted" style="font-size: 0.75rem; letter-spacing: 0.1em">// DISCORD</p>
+                        <br />
+                        <a href="https://discord.gg/bQFPFmtFe" class="btn" target="_blank" rel="noopener">↗ JOIN SERVER</a>
+                    </div>
+                </div>
                 </div>
             </section>
         </main>

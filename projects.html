@@ -21,24 +21,21 @@
             <nav id="main-nav" aria-label="Main navigation">
                 <a href="index.html"># HOME</a>
                 <span class="nav-sep">//</span>
+                <a href="about.html">ABOUT</a>
+                <span class="nav-sep">//</span>
+                <a href="projects.html" class="active" aria-current="page">PROJECTS</a>
+                <span class="nav-sep">//</span>
                 <a href="skills and conquests.html">PROWESS</a>
                 <span class="nav-sep">//</span>
-                <a href="graveyard.html">GRAVEYARD</a>
+                <a href="contact.html">CONTACT</a>
                 <span class="nav-sep">//</span>
-                <a href="about.html">ABOUT</a>
-
+                <a href="terminal.html">TERMINAL</a>
             </nav>
             <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
                 <a href="index.html"># HOME</a>
                 <a href="about.html">ABOUT</a>
-                <a href="projects.html" aria-current="page">PROJECTS</a>
                 <a href="skills and conquests.html">PROWESS</a>
                 <a href="contact.html">CONTACT</a>
-                <a href="graveyard.html">GRAVEYARD</a>
-                <a href="resume.html">RESUME</a>
-                <a href="changelog.html">CHANGELOG</a>
-                <a href="terminal.html">TERMINAL</a>
-            </div>
         </header>
 
         <main id="main-content">
@@ -49,10 +46,10 @@
                 </div>
                 <div class="rule"></div>
                 <div class="collapsible-content" id="projects-vault">
-                <p>
+                <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem)">
                     Active operations. Everything currently in progress or
                     deployed.
-                </p>
+                </h3>
                 <br />
                 <div class="terminal-line">
                     <span class="prompt">root@p0 ~ $</span>
@@ -62,12 +59,15 @@
                 <div class="project-grid">
                     <div class="project-card">
                         <h3>GITHUB REPOSITORY</h3>
-                        <p>
-                            All
-                            active source code, scripts, and experiments
-                            live here.
-                            The full archive of work in motion.
-                        </p>
+                        <ul>
+                            <li>
+                                All active source code, scripts, and experiments live here.
+                            </li>
+                            <li>
+                                The full archive of work in motion.
+                            </li>
+
+                        </ul>
                         <br />
                         <a
                             href="https://github.com/0XClumzzy"
@@ -79,29 +79,30 @@
                         <br /><br />
                         <span class="status active">● ACTIVE</span>
                     </div>
-                     <div class="project-card">
-                        <h3>ZZYUTIL</h3>
-                        <p>
-                            A cyber tool suite inspired by linutil
-                        </p>
-                        <br />
-                        <a
-                            href="https://github.com/0xClumzzy/zzyutil.git"
-                            class="btn"
-                            target="_blank"
-                            rel="noopener"
-                            >↗ GET TOOL</a
-                        >
-                        <br /><br />
-                        <span class="status active">● ACTIVE</span>
-                    </div>
+
+                    <!--ZZYUTIL -->
+                    <div class="project-card">
+                       <h3>PYTHON BOOK FOR CYBER SECUTITY</h3>
+                       <ul>
+                           <li> A cyber tool suite inspired by linutil</li>
+                       </ul>
+                       <br />
+                       <a
+                           href="https://github.com/0xClumzzy/zzyutil.git"
+                           class="btn"
+                           target="_blank"
+                           rel="noopener"
+                           >↗ GET TOOL</a
+                       >
+                       <br /><br />
+                       <span class="status active">● ACTIVE</span>
+                   </div>
                      <div class="project-card">
                         <h3>PYTHON BOOK FOR CYBER SECUTITY</h3>
-                        <p>
-                            A
-                            book aimed for  beginners.
-                            Adapting the MITRE ATT&CK framework
-                        </p>
+                        <ul>
+                            <li>A book aimed for  beginners.</li>
+                            <li>Adapting the MITRE ATT&amp;CK framework</li>
+                        </ul>
                         <br />
                         <a
                             href=""
@@ -115,9 +116,11 @@
                     </div>
                     <div class="project-card">
                         <h3>CYBER HUB </h3>
-                        <pre>
-                            A productivity tool for cyber enthusiasts.
-                        </pre>
+                        <ul>
+                            <li>
+                                A productivity tool for cyber enthusiasts.
+                            </li>
+                        </ul>
                         <br />
                         <a
                             href=""
@@ -131,10 +134,10 @@
                     </div>
                     <div class="project-card">
                         <h3>PROTOCOL ZERO</h3>
-                        <p>
-                            The site you're on right now. Built raw. Rebuilt
-                            with intent. The hub for everything else.
-                        </p>
+                            <ul>
+                                <li>The site you're on right now. </li>
+                                <li>The hub for everything else.. </li>
+                            </ul
                         <br />
                         <span class="status active">● ACTIVE</span>
                     </div>
@@ -145,7 +148,7 @@
             <hr class="glyph" />
 
             <section>
-                <p class="text-muted" style="font-size: 0.8rem">
+                <p class="text-muted" style="font-size: 1.0em">
                     More projects are either classified or not yet ready for
                     public deployment.<br />
                     Check the <a href="graveyard.html">GRAVEYARD</a> for
