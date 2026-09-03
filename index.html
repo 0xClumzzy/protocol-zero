@@ -1,64 +1,239 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PROTOCOL ZERO — HOME</title>
-        <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="animations.css" />
-    </head>
-    <body>
-        <a href="#main-content" class="skip-link">Skip to main content</a>
-        <header>
-            <div class="site-title flicker" data-text="PROTOCOL ZERO">
-                PROTOCOL ZERO
-            </div>
-            <div class="mobile-nav-toggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-<nav id="main-nav" aria-label="Main navigation">
-                <a href="index.html" class="active" aria-current="page"># HOME</a>
-            </nav>
-            <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
-                <a href="index.html"># HOME</a>
-                <a href="about.html">ABOUT</a>
-                <a href="projects.html">PROJECTS</a>
-                <a href="skills and conquests.html">PROWESS</a>
-                <a href="contact.html">CONTACT</a>
-                <a href="graveyard.html">GRAVEYARD</a>
-                <a href="changelog.html">CHANGELOG</a>
-                <a href="terminal.html">TERMINAL</a>
-            </div>
-        </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theo Kufigwa — Cybersecurity Student and CTF Player</title>
+  <meta name="description" content="Theo Kufigwa (0xClumzZy); Cybersecurity student at Botho University, Hack The Box  Hacker, CTF competitor. Projects, skills, and contact." />
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-        <main id="main-content">
-            <section class="hero">
-                <h1 class="page-heading">WELCOME</h1>
-                <div class="rule"></div>
-                <p class="tagline cursor">IMPROVISE. ADAPT. EXECUTE.</p>
-                <br />
-                <div class="terminal-line">
-                    <span class="prompt">root@p0 ~ $</span>
-                    <span class="out"> system boot sequence complete</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="prompt">root@p0 ~ $</span>
-                    <span class="out"> all protocols nominal</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="prompt">root@p0 ~ $</span>
-                    <span class="out"> access granted ■</span>
-                </div>
-                <br />
-                <a href="about.html" class="btn">ENTER THE PROTOCOL</a>
-            </section>
-        </main>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Theo Kufigwa home">
+        <span class="brand-mark" aria-hidden="true">TK</span>
+        <span class="brand-name">Theo Kufigwa</span>
+        <span class="brand-sub">Cybersecurity Student</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html" data-nav class="active" aria-current="page">Home</a>
+        <a href="work.html" data-nav>Work</a>
+        <a href="about.html" data-nav>About</a>
+        <a href="resume.html" data-nav>Re�sueé</a>
+        <a href="contact.html" data-nav>Contact</a>
+      </nav>
+      <a href="https://github.com/0XClumzzy" class="btn btn-secondary btn-small header-cta" target="_blank" rel="noopener">GitHub ↗</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="resume.html">Résumé</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://github.com/0XClumzzy" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </header>
 
-        <footer>
-            <p>© PROTOCOL ZERO — ALL RIGHTS RESERVED</p>
-        </footer>
-      <script src="animations.js"></script>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow"><span class="eyebrow-dot"></span> Botswana · BSc Cyber Security · HTB Pro Hacker</span>
+          <h1>Theo Kufigwa builds <span>practical security tools</span> and competes in CTFs.</h1>
+          <p class="lede">Cybersecurity student, CTF player, and developer focused on web exploitation, privilege escalation, and automation.</p>
+          <p class="sub">Currently at <strong>Botho University</strong> (expected 2026). Ranked <strong>No. 2 in Botswana</strong> on Hack The Box. Winner - Primer CTF 2026 (SA College Division).</p>
+          <div class="hero-actions">
+            <a href="work.html" class="btn btn-primary">View selected work</a>
+            <a href="resume.html" class="btn btn-secondary">View résumé</a>
+            <a href="assets/THEO_KUFIGWA_resumedocx.pdf" class="btn btn-secondary" download>Download PDF ↓</a>
+          </div>
+          <div class="hero-meta">
+            <span>✉ <a href="mailto:clumzzysec@gmail.com">clumzzysec@gmail.com</a></span>
+            <span>⌨ <a href="https://github.com/0XClumzzy" target="_blank" rel="noopener">github.com/0XClumzzy</a></span>
+            <span>◈ <a href="https://app.hackthebox.com/users/2663698" target="_blank" rel="noopener">Hack The Box profile</a></span>
+          </div>
+        </div>
+        <aside class="hero-card reveal visible">
+          <img src="assets/fpr.png" alt="Portrait of Theo Kufigwa" class="avatar" width="88" height="88" />
+          <div>
+            <h2>Theo Kufigwa</h2>
+            <p class="role">Cyber Security Student · CTF Player · Developer</p>
+            <ul class="mini-list">
+              <li>24 user flags · 21 system flags on HTB</li>
+              <li>Top 5 - BOCRA Cyberlympics 2026 Finals</li>
+              <li>Python, Bash, JS/TS, Linux, Burp, Nmap</li>
+            </ul>
+            <a href="about.html" class="btn btn-secondary btn-small">More about me →</a>
+          </div>
+        </aside>
+      </div>
+      <div class="wrap">
+        <ul class="stats">
+          <li class="reveal"><div class="stat-num">No. 2</div><div class="stat-label">Hack The Box ? Botswana ranking</div></li>
+          <li class="reveal"><div class="stat-num">45</div><div class="stat-label">HTB flags (24 user + 21 system)</div></li>
+          <li class="reveal"><div class="stat-num">Top 5</div><div class="stat-label">BOCRA Cyberlympics 2026 Finals</div></li>
+          <li class="reveal"><div class="stat-num">1st</div><div class="stat-label">Primer CTF 2026 ? SA College Division</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Selected work</h2>
+            <p>A short, maintained list. Everything else lives on GitHub.</p>
+          </div>
+          <a href="work.html" class="section-link">All projects →</a>
+        </div>
+        <div class="card-grid">
+          <article class="card reveal">
+            <div class="card-top">
+              <h3>zzyutil</h3>
+              <span class="tag tag-live">● Active</span>
+            </div>
+            <p>Cyber tool suite for quik tool installation without leaving the terminal;inspired by Linutil, built for repeatable ops. </p>
+            <div class="card-meta">
+              <span class="chip">Rust</span><span class="chip">Bash</span><span class="chip">Python</span><span class="chip">Linux</span>
+            </div>
+            <div class="card-actions">
+              <a href="https://github.com/0xClumzzy/zzyutil.git" class="btn btn-secondary btn-small" target="_blank" rel="noopener">View repo ↗</a>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card-top">
+              <h3>Protocol Zero</h3>
+              <span class="tag tag-live">● Active</span>
+            </div>
+            <p>This portfolio,employer-ready site.</p>
+            <div class="card-meta">
+              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
+            </div>
+            <div class="card-actions">
+              <a href="https://github.com/0XClumzzy" class="btn btn-secondary btn-small" target="_blank" rel="noopener">Source ↗</a>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card-top">
+              <h3>Python for Cybersecurity (book)</h3>
+              <span class="tag tag-soon">● In progress</span>
+            </div>
+            <p>Beginner-focused book mapping MITRE ATT&amp;CK to practical Python tooling you can run in labs and real life engagements.</p>
+            <div class="card-meta">
+              <span class="chip">Python</span><span class="chip">MITRE ATT&amp;CK</span><span class="chip">Labs</span>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card-top">
+              <h3>Cyber Hub</h3>
+              <span class="tag tag-soon">● Planned</span>
+            </div>
+            <p>Productivity dashboard for CTF players and security students notes, checklists, and quick refs.</p>
+            <div class="card-meta">
+              <span class="chip">TypeScript</span><span class="chip">Web</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="section section-flush">
+      <div class="wrap two-col">
+        <div class="panel reveal">
+          <h3>What I do well</h3>
+          <ul class="check-list">
+            <li>Web exploitation (OWASP Top 10) with Burp Suite</li>
+            <li>Linux privilege escalation &amp; post-exploitation basics</li>
+            <li>Network recon: Nmap, Gobuster/ffuf, service enumeration</li>
+            <li>Scripting &amp; automation: Python, Bash</li>
+            <li>Foundations: MITRE ATT&amp;CK, NIST CSF, secure defaults</li>
+          </ul>
+        </div>
+        <div class="panel reveal">
+          <h3>Toolbox</h3>
+          <div class="skill-groups">
+            <div>
+              <h4>Languages &amp; OS</h4>
+              <div class="card-meta">
+                <span class="chip">Python</span><span class="chip">Bash</span><span class="chip">JavaScript / TS</span><span class="chip">HTML / CSS</span><span class="chip">Arch · Kali · Ubuntu</span>
+              </div>
+            </div>
+            <div>
+              <h4>Security tools</h4>
+              <div class="card-meta">
+                <span class="chip">Burp Suite</span><span class="chip">Nmap</span><span class="chip">Metasploit</span><span class="chip">Wireshark</span><span class="chip">John / Hashcat</span><span class="chip">Volatility</span><span class="chip">Ghidra</span>
+              </div>
+            </div>
+            <div>
+              <h4>Workflow</h4>
+              <div class="card-meta">
+                <span class="chip">Docker</span><span class="chip">Git / GitHub Actions</span><span class="chip">Linux hardening</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section-flush">
+      <div class="wrap">
+        <div class="about-strip reveal">
+          <div>
+            <h2>A student operator.</h2>
+            <p>I learn by competing and building in public - CTFs for pressure, tooling for leverage, write-ups for clarity. Open to internships, mentorship, and collabs.</p>
+            <div class="hero-actions hero-actions-tight">
+              <a href="about.html" class="btn btn-secondary">Read full bio</a>
+              <a href="https://discord.gg/bQFPFmtFe" class="btn btn-secondary" target="_blank" rel="noopener">Discord ↗</a>
+            </div>
+          </div>
+          <ul class="about-facts">
+            <li>Education: BSc Cyber Security, Botho University</li>
+	    <li>Focus:    PENTESTING</li> 
+            <li>Location: Botswana · Remote-friendl</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-flush">
+      <div class="wrap">
+        <div class="contact-box reveal">
+          <div>
+            <h2>Let's work together.</h2>
+            <p>Fastest way to reach me is email. I reply when I'm not in a lab.</p>
+          </div>
+          <div class="contact-actions">
+            <a href="mailto:clumzzysec@gmail.com" class="btn btn-primary">Email me</a>
+            <a href="contact.html" class="btn btn-secondary">Contact page</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> Theo Kufigwa · Protocol Zo</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume�</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/0XClumzzy" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>

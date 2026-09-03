@@ -1,539 +1,72 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PROTOCOL ZERO — TERMINAL</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="animations.css" />
-    </head>
-    <body>
-        <a href="#main-content" class="skip-link">Skip to main content</a>
-        <header>
-            <div class="site-title flicker" data-text="TERMINAL ACCESS">
-                TERMINAL ACCESS
-            </div>
-            <div class="mobile-nav-toggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <nav id="main-nav" aria-label="Main navigation">
-                <a href="index.html"># HOME</a>
-                <span class="nav-sep">//</span>
-                <a href="about.html">ABOUT</a>
-                <span class="nav-sep">//</span>
-                <a href="projects.html">PROJECTS</a>
-                <span class="nav-sep">//</span>
-                <a href="skills and conquests.html">PROWESS</a>
-                <span class="nav-sep">//</span>
-                <a href="contact.html">CONTACT</a>
-                <span class="nav-sep">//</span>
-                <a href="graveyard.html">GRAVEYARD</a>
-                <span class="nav-sep">//</span>
-                <a href="changelog.html">CHANGELOG</a>
-                <span class="nav-sep">//</span>
-                <a href="terminal.html" class="active" aria-current="page">TERMINAL</a>
-            </nav>
-            <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
-                <a href="index.html"># HOME</a>
-                <a href="about.html">ABOUT</a>
-                <a href="projects.html">PROJECTS</a>
-                <a href="skills and conquests.html">PROWESS</a>
-                <a href="contact.html">CONTACT</a>
-                <a href="graveyard.html">GRAVEYARD</a>
-                <a href="changelog.html">CHANGELOG</a>
-                <a href="terminal.html" aria-current="page">TERMINAL</a>
-            </div>
-        </header>
-
-        <main id="main-content">
-            <section>
-                <h1 class="page-heading">INTERACTIVE TERMINAL</h1>
-                <div class="rule"></div>
-                <p>Simulated terminal environment. Type <code style="color: var(--accent-bright);">help</code> for available commands.</p>
-                <br />
-                <div class="terminal-line">
-                    <span class="prompt">root@p0 ~ $</span>
-                    <span class="out"> protocol-zero v2.0 — terminal module loaded</span>
-                </div>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <div id="terminal" class="terminal-container" role="application" aria-label="Interactive terminal">
-                    <div id="terminal-output" class="terminal-output" aria-live="polite" aria-atomic="false"></div>
-                    <div class="terminal-input-line">
-                        <span class="prompt" aria-hidden="true">root@protocol-zero@p0:~$</span>
-                        <input
-                            type="text"
-                            id="terminal-input"
-                            class="terminal-input"
-                            autocomplete="off"
-                            spellcheck="false"
-                            aria-label="Command input"
-                            placeholder="Type a command..."
-                        >
-                        <span class="cursor" aria-hidden="true">█</span>
-                    </div>
-                </div>
-            </section>
-
-            <hr class="glyph" />
-
-            <section id="commands-section">
-                <div class="section-header">
-                    <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem); margin-bottom: 0;">AVAILABLE COMMANDS</h3>
-                    <button class="section-toggle" id="commands-toggle-btn" data-toggle="commands-content">[ MINIMIZE ]</button>
-                </div>
-                <div class="rule"></div>
-                <div class="collapsible-content" id="commands-content">
-                    <div class="project-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-                    <div class="project-card">
-                        <h3>HELP</h3>
-                        <p>Show all available commands with descriptions</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">help</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>WHOAMI</h3>
-                        <p>Display current user identity</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">whoami</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>LS</h3>
-                        <p>List directory contents</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">ls [path]</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>CAT</h3>
-                        <p>Display file contents</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">cat &lt;file&gt;</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>PS</h3>
-                        <p>Show running processes</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">ps</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>NMAP</h3>
-                        <p>Simulated port scan</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">nmap &lt;target&gt;</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>HTB</h3>
-                        <p>Hack The Box stats</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">htb</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>SKILLS</h3>
-                        <p>Show skill matrix summary</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">skills</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>PROJECTS</h3>
-                        <p>List active projects</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">projects</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>CLEAR</h3>
-                        <p>Clear terminal output</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">clear</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>MATRIX</h3>
-                        <p>Matrix rain animation</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">matrix</code>
-                    </div>
-                    <div class="project-card">
-                        <h3>NEOFETCH</h3>
-                        <p>System info display</p>
-                        <br />
-                        <code style="color: var(--accent-bright);">neofetch</code>
-                    </div>
-                </div>
-                </div>
-            </section>
-
-            <hr class="glyph" />
-
-            <section>
-                <h3 class="page-heading" style="font-size: clamp(1.3rem, 4vw, 1.8rem)">FILESYSTEM STRUCTURE</h3>
-                <div class="rule"></div>
-                <pre style="color: var(--mid); font-size: 0.8rem; line-height: 1.8;">
-/home/zero
-├── .config/
-│   └── protocol-zero/
-├── projects/
-│   ├── zzyutil/
-│   ├── protocol-zero/
-│   ├── cyber-hub/
-│   └── python-book/
-├── writeups/
-│   └── htb/
-├── tools/
-│   ├── nmap/
-│   ├── burp/
-│   └── scripts/
-├── notes/
-│   ├── oscp/
-│   └── ctf/
-└── .bashrc
-                </pre>
-            </section>
-
-            <hr class="glyph" />
-
-            <section style="text-align: center;">
-                <p class="text-muted" style="font-size: 0.85rem;">
-                    This is a simulated terminal for demonstration.
-                    <a href="https://github.com/0XClumzzy/zzyutil" target="_blank" rel="noopener">Real tools live in zzyutil</a>.
-                </p>
-            </section>
-        </main>
-
-        <footer>
-            <p>© PROTOCOL ZERO — ALL RIGHTS RESERVED</p>
-        </footer>
-        <script src="animations.js"></script>
-        <script>
-            (function() {
-                'use strict';
-
-                const terminalOutput = document.getElementById('terminal-output');
-                const terminalInput = document.getElementById('terminal-input');
-                let commandHistory = [];
-                let historyIndex = -1;
-
-                const commands = {
-                    help: () => [
-                        'AVAILABLE COMMANDS:',
-                        '  help       - Show this help message',
-                        '  whoami     - Display current user',
-                        '  ls [path]  - List directory contents',
-                        '  cat <file> - Display file contents',
-                        '  ps         - Show running processes',
-                        '  nmap <tgt> - Simulated port scan',
-                        '  htb        - Hack The Box stats',
-                        '  skills     - Skill matrix summary',
-                        '  projects   - List active projects',
-                        '  clear      - Clear terminal',
-                        '  matrix     - Matrix rain animation',
-                        '  neofetch   - System info',
-                        '  exit       - Close terminal (reload page)',
-                        '',
-                        'Type any command to execute.'
-                    ].join('\n'),
-
-                    whoami: () => [
-                        'zero@protocol-zero',
-                        'uid=1000(zero) gid=1000(zero) groups=1000(zero),27(sudo),999(docker)',
-                        'Current threat level: ZERO'
-                    ].join('\n'),
-
-                    ls: (args) => {
-                        const path = args[0] || '/home/zero';
-                        const fs = {
-                            '/home/zero': [
-                                'drwxr-xr-x  2 zero zero 4096 Jul  8 00:00 .config',
-                                'drwxr-xr-x  5 zero zero 4096 Jul  8 00:00 projects',
-                                'drwxr-xr-x  3 zero zero 4096 Jul  8 00:00 writeups',
-                                'drwxr-xr-x  4 zero zero 4096 Jul  8 00:00 tools',
-                                'drwxr-xr-x  3 zero zero 4096 Jul  8 00:00 notes',
-                                '-rw-r--r--  1 zero zero  1245 Jul  8 00:00 .bashrc'
-                            ],
-                            '/home/zero/projects': [
-                                'drwxr-xr-x  3 zero zero 4096 Jul  8 00:00 zzyutil',
-                                'drwxr-xr-x  4 zero zero 4096 Jul  8 00:00 protocol-zero',
-                                'drwxr-xr-x  2 zero zero 4096 Jul  8 00:00 cyber-hub',
-                                'drwxr-xr-x  2 zero zero 4096 Jul  8 00:00 python-book'
-                            ],
-                            '/home/zero/tools': [
-                                'drwxr-xr-x  2 zero zero 4096 Jul  8 00:00 nmap',
-                                'drwxr-xr-x  2 zero zero 4096 Jul  8 00:00 burp',
-                                'drwxr-xr-x  3 zero zero 4096 Jul  8 00:00 scripts'
-                            ]
-                        };
-                        return fs[path] ? `ls: ${path}\n${fs[path].join('\n')}` : `ls: cannot access '${path}': No such file or directory`;
-                    },
-
-                    cat: (args) => {
-                        const file = args[0];
-                        const files = {
-                            '.bashrc': '# Protocol Zero .bashrc\nexport PS1="\\[\\e[31m\\]zero@p0\\[\\e[0m\\]:\\[\\e[34m\\]\\w\\[\\e[0m\\]\\$ "\nalias ll="ls -la"\nalias scan="nmap -sS -T4"\nalias htb="ssh htb"\nexport PATH="$HOME/tools/scripts:$PATH"',
-                            'README.md': '# Protocol Zero\n\nTerminal-themed cybersecurity portfolio.\n\n## Quick Start\n```bash\n./zzyutil --harden\n```',
-                            'todo.txt': '[ ] OSCP prep\n[ ] Bug bounty\n[ ] Tool development\n[ ] Writeup automation'
-                        };
-                        return files[file] ? `cat: ${file}\n${files[file]}` : `cat: ${file}: No such file or directory`;
-                    },
-
-                    ps: () => [
-                        '  PID TTY          TIME CMD',
-                        '    1 ?        00:00:01 systemd',
-                        '  142 ?        00:00:00 docker',
-                        ' 1024 pts/0    00:00:00 zsh',
-                        ' 2847 pts/0    00:00:02 nmap -sS 10.10.10.0/24',
-                        ' 3102 pts/1    00:00:01 python3 exploit.py',
-                        ' 4096 pts/2    00:00:00 vim writeup.md',
-                        ' 8192 pts/3    00:00:03 ghidra',
-                        '16384 pts/4    00:00:00 ./zzyutil --enum'
-                    ].join('\n'),
-
-                    nmap: (args) => {
-                        const target = args[0] || '10.10.10.1';
-                        return [
-                            `Starting Nmap 7.94 at ${new Date().toLocaleString()}`,
-                            `Nmap scan report for ${target}`,
-                            'Host is up (0.032s latency).',
-                            '',
-                            'PORT     STATE SERVICE    VERSION',
-                            '22/tcp   open  ssh        OpenSSH 8.9p1 Ubuntu 3',
-                            '80/tcp   open  http       nginx 1.18.0',
-                            '443/tcp  open  ssl/http   nginx 1.18.0',
-                            '3306/tcp open  mysql      MySQL 8.0.33',
-                            '8080/tcp open  http-proxy Apache Tomcat 9.0.65',
-                            '',
-                            'Service detection performed. Please report any incorrect results.',
-                            'Nmap done: 1 IP address (1 host up) scanned in 2.34 seconds'
-                        ].join('\n');
-                    },
-
-                    htb: () => [
-                        'HACK THE BOX — PROTOCOL ZERO',
-                        '===============================',
-                        'User: 0XClumzzy (ID: 2663698)',
-                        'Rank: Pro Hacker',
-                        'Country: Botswana 🇧🇼',
-                        '',
-                        'Flags Collected:',
-                        '  User Flags:  17',
-                        '  Root Flags:  15',
-                        '  Points:      134',
-                        '',
-                        'Country Rank: # Botswana',
-                        'Global Rank:  Top 5%',
-                        '',
-                        'Recent Pwns: Helix, Connected, DevArea, Variatype,',
-                        '  SmartHire, DevHub, Interpreter, Principal,',
-                        '  Silentium, 2Million, CCTV, WingData',
-                        '',
-                        'Active: Yes — hunting daily.'
-                    ].join('\n'),
-
-                    skills: () => [
-                        'SKILL MATRIX — PROTOCOL ZERO',
-                        '=============================',
-                        '',
-                        'OFFENSIVE:',
-                        '  Web Exploitation      ██░░░░░░░░ 20%',
-                        '  Privilege Escalation  █░░░░░░░░░ 10%',
-                        '  Buffer Overflows      ░░░░░░░░░░  0%',
-                        '  Metasploit            █░░░░░░░░░ 10%',
-                        '  Password Cracking     ██░░░░░░░░ 20%',
-                        '',
-                        'DEFENSIVE:',
-                        '  Log Analysis          █░░░░░░░░░ 10%',
-                        '  Incident Response     ░░░░░░░░░░  0%',
-                        '  Malware Analysis      ░░░░░░░░░░  0%',
-                        '  Network Forensics     █░░░░░░░░░ 10%',
-                        '  Threat Modelling      ░░░░░░░░░░  0%',
-                        '',
-                        'DEV / TOOLING:',
-                        '  Python                ███░░░░░░░ 30%',
-                        '  Bash/Shell            ███░░░░░░░ 30%',
-                        '  JavaScript/TypeScript █░░░░░░░░░ 10%',
-                        '  Rust                  █░░░░░░░░░ 10%',
-                        '  Docker                █░░░░░░░░░ 10%',
-                        '  Git                   ██░░░░░░░░ 20%',
-                        '',
-                        'RECON:',
-                        '  OSINT                 █░░░░░░░░░ 10%',
-                        '  Nmap/Rustscan         ████░░░░░░ 40%',
-                        '  Gobuster/ffuf         ███░░░░░░░ 30%',
-                        '  Burp Suite            █░░░░░░░░░ 10%',
-                        '  Shodan                █░░░░░░░░░ 10%'
-                    ].join('\n'),
-
-                    projects: () => [
-                        'ACTIVE PROJECTS — PROTOCOL ZERO',
-                        '==============================',
-                        '',
-                        '[1] ZZYUTIL',
-                        '    Cyber tool suite — hardening, recon, enumeration',
-                        '    Status: ACTIVE | Language: Bash/Python',
-                        '    Repo: github.com/0xClumzzy/zzyutil',
-                        '',
-                        '[2] PROTOCOL ZERO',
-                        '    This portfolio — terminal theme, GitHub Pages',
-                        '    Status: ACTIVE | Stack: HTML/CSS/JS',
-                        '    Repo: github.com/0XClumzzy/protocol-zero',
-                        '',
-                        '[3] PYTHON BOOK FOR CYBER SECURITY',
-                        '    MITRE ATT&CK mapped to Python tooling',
-                        '    Status: PENDING | Target: Q4 2026',
-                        '',
-                        '[4] CYBER HUB',
-                        '    CTF productivity dashboard',
-                        '    Status: PENDING | Stack: React/Tauri',
-                        '',
-                        'Run `cat ~/projects/<name>/README.md` for details.'
-                    ].join('\n'),
-
-                    clear: () => {
-                        terminalOutput.innerHTML = '';
-                        return '';
-                    },
-
-                    matrix: () => {
-                        startMatrixRain();
-                        return 'MATRIX RAIN INITIATED... Press Ctrl+C to stop';
-                    },
-
-                    neofetch: () => [
-                        '        ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄',
-                        '       ▐ PROTOCOL ZERO v2.0 — zero@p0  ▐',
-                        '       ▐ ───────────────────────── ▐',
-                        '       ▐ OS: Arch Linux x86_64       ▐',
-                        '       ▐ Kernel: 6.9.0-zen1        ▐',
-                        '       ▐ WM: Hyprland / Sway         ▐',
-                        '       ▐ Shell: zsh 5.9            ▐',
-                        '       ▐ Terminal: terminator           ▐',
-                        '       ▐ CPU: banana!!!!!!!!!!!    ▐',
-                        '       ▐ GPU: banaaana!!!!!!!      ▐',
-                        '       ▐ Memory: 2GB RAM            ▐',
-                        '       ▐ Disk: 2TB            ▐',
-                        '       ▐ ───────────────────────── ▐',
-                        '       ▐ Packages: 1423 (pacman)   ▐',
-                        '       ▐ Uptime: 3 days, 4h 22m    ▐',
-                        '       ▐ Threat Level: ZERO        ▐',
-                        '        ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀'
-                    ].join('\n'),
-
-                    exit: () => {
-                        return 'Closing terminal... Protocol Zero session terminated.\nRefresh page to restart.';
-                    }
-                };
-
-                function appendOutput(text, className = '') {
-                    const line = document.createElement('div');
-                    line.className = 'terminal-output-line ' + className;
-                    line.textContent = text;
-                    terminalOutput.appendChild(line);
-                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
-                }
-
-                function appendCommand(cmd) {
-                    const line = document.createElement('div');
-                    line.className = 'terminal-output-line command-line';
-                    line.innerHTML = '<span class="prompt">@zero@p0:~$</span> ' + cmd;
-                    terminalOutput.appendChild(line);
-                }
-
-                function executeCommand(input) {
-                    const parts = input.trim().split(/\s+/);
-                    const cmd = parts[0].toLowerCase();
-                    const args = parts.slice(1);
-
-                    appendCommand(input);
-
-                    if (commands[cmd]) {
-                        const result = commands[cmd](args);
-                        if (result !== '') {
-                            appendOutput(result);
-                        }
-                    } else if (input.trim() !== '') {
-                        appendOutput(`bash: ${cmd}: command not found`, 'error');
-                        appendOutput(`Type 'help' for available commands.`, 'muted');
-                    }
-                }
-
-                function startMatrixRain() {
-                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()アイウエオカキクケコ';
-                    let matrixInterval;
-                    let lines = 0;
-
-                    function addMatrixLine() {
-                        if (lines > 30) {
-                            clearInterval(matrixInterval);
-                            return;
-                        }
-                        let line = '';
-                        for (let i = 0; i < 60; i++) {
-                            line += chars[Math.floor(Math.random() * chars.length)];
-                        }
-                        appendOutput(line, 'matrix-line');
-                        lines++;
-                    }
-
-                    matrixInterval = setInterval(addMatrixLine, 100);
-
-                    // Allow Ctrl+C to stop
-                    const stopHandler = (e) => {
-                        if (e.ctrlKey && e.key === 'c') {
-                            clearInterval(matrixInterval);
-                            appendOutput('^C Matrix rain stopped.', 'muted');
-                            document.removeEventListener('keydown', stopHandler);
-                        }
-                    };
-                    document.addEventListener('keydown', stopHandler);
-                }
-
-                // Initial boot message
-                appendOutput('PROTOCOL ZERO TERMINAL v2.0');
-                appendOutput('Type "help" for available commands.');
-                appendOutput('');
-
-                terminalInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        const cmd = terminalInput.value;
-                        terminalInput.value = '';
-                        commandHistory.push(cmd);
-                        historyIndex = commandHistory.length;
-                        executeCommand(cmd);
-                    } else if (e.key === 'ArrowUp') {
-                        e.preventDefault();
-                        if (historyIndex > 0) {
-                            historyIndex--;
-                            terminalInput.value = commandHistory[historyIndex];
-                        }
-                    } else if (e.key === 'ArrowDown') {
-                        e.preventDefault();
-                        if (historyIndex < commandHistory.length - 1) {
-                            historyIndex++;
-                            terminalInput.value = commandHistory[historyIndex];
-                        } else {
-                            historyIndex = commandHistory.length;
-                            terminalInput.value = '';
-                        }
-                    } else if (e.key === 'Tab') {
-                        e.preventDefault();
-                        // Simple tab completion
-                        const cmds = Object.keys(commands);
-                        const partial = terminalInput.value.toLowerCase();
-                        const match = cmds.find(c => c.startsWith(partial));
-                        if (match) {
-                            terminalInput.value = match + ' ';
-                        }
-                    }
-                });
-
-                // Focus input on click
-                document.getElementById('terminal').addEventListener('click', () => {
-                    terminalInput.focus();
-                });
-
-                // Auto-focus on load
-                terminalInput.focus();
-            })();
-        </script>
-    </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal Playground — Theo Kufigwa</title>
+  <meta name="description" content="Interactive terminal demo — simulated security commands." />
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Theo Kufigwa home"><span class="brand-mark" aria-hidden="true">TK</span><span class="brand-name">Theo Kufigwa</span><span class="brand-sub">Cybersecurity Student</span></a>
+      <nav class="site-nav" aria-label="Primary"><a href="index.html" data-nav>Home</a><a href="work.html" data-nav>Work</a><a href="about.html" data-nav>About</a><a href="resume.html" data-nav>Résumé</a><a href="contact.html" data-nav>Contact</a></nav>
+      <a href="https://github.com/0XClumzzy" class="btn btn-secondary btn-small header-cta" target="_blank" rel="noopener">GitHub ↗</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="resume.html">Résumé</a><a href="contact.html">Contact</a></nav>
+  </header>
+  <main id="main">
+    <section class="page-hero"><div class="wrap"><span class="eyebrow"><span class="eyebrow-dot"></span> Playground</span><h1>Interactive terminal.</h1><p class="lede">Simulated demo. Type <strong>help</strong> to start. Real tools live in zzyutil.</p></div></section>
+    <section class="section"><div class="wrap">
+      <div class="term reveal visible" id="terminal">
+        <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span></div>
+        <div class="term-out" id="terminal-output" aria-live="polite"></div>
+        <div class="term-line"><span>zero@p0:~$</span><input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Command input" placeholder="Type help…" /></div>
+      </div>
+    </div></section>
+    <section class="section section-flush"><div class="wrap">
+      <div class="section-head"><div><h2>Commands</h2></div></div>
+      <div class="cmd-grid">
+        <div class="card"><h3>help</h3><p>List commands.</p><code>help</code></div>
+        <div class="card"><h3>whoami</h3><p>Identity.</p><code>whoami</code></div>
+        <div class="card"><h3>htb</h3><p>HTB stats.</p><code>htb</code></div>
+        <div class="card"><h3>projects</h3><p>Active builds.</p><code>projects</code></div>
+        <div class="card"><h3>nmap &lt;target&gt;</h3><p>Simulated scan.</p><code>nmap 10.10.10.1</code></div>
+        <div class="card"><h3>skills</h3><p>Matrix summary.</p><code>skills</code></div>
+        <div class="card"><h3>neofetch</h3><p>System card.</p><code>neofetch</code></div>
+        <div class="card"><h3>clear</h3><p>Clear output.</p><code>clear</code></div>
+      </div>
+    </div></section>
+    <section class="section section-flush"><div class="wrap"><pre class="tree">/home/zero
+├── projects/  zzyutil · protocol-zero · cyber-hub · python-book
+├── writeups/  htb/
+├── tools/     nmap · burp · scripts
+└── notes/     oscp · ctf</pre></div></section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><span>© <span id="year">2026</span> Theo Kufigwa</span><nav class="footer-links" aria-label="Footer"><a href="index.html">Home</a><a href="work.html">Work</a><a href="contact.html">Contact</a></nav></div></footer>
+  <script src="main.js"></script>
+  <script>
+  (function(){
+    var out=document.getElementById('terminal-output'),inp=document.getElementById('terminal-input'),hist=[],hi=-1;
+    var cmds={
+      help:function(){return['AVAILABLE: help whoami htb skills projects nmap neofetch clear','Try: htb / projects / nmap 10.10.10.1'].join('\n')},
+      whoami:function(){return'zero@protocol-zero — student operator (HTB Pro Hacker, Botswana #2)'},
+      htb:function(){return['HTB — 0XClumzzy (2663698)','Rank: Pro Hacker | No.2 Botswana','Flags: 24 user · 21 system','Pwned: Helix, Connected, DevArea, Variatype, SmartHire, DevHub, Interpreter, Principal, Silentium, 2Million, CCTV, WingData'].join('\n')},
+      skills:function(){return'Web (Burp) · Privesc · Nmap/ffuf · Python/Bash · Wireshark · Docker/Git · MITRE/NIST/OWASP'},
+      projects:function(){return'[zzyutil] hardening+recon suite — ACTIVE\n[protocol-zero] this site — ACTIVE\n[python-book] MITRE x Python — IN PROGRESS\n[cyber-hub] CTF dashboard — PLANNED'},
+      nmap:function(a){var t=a[0]||'10.10.10.1';return['Nmap scan: '+t,'22/tcp ssh  80/tcp http  443/tcp https  3306/tcp mysql'].join('\n')},
+      neofetch:function(){return'protocol-zero v3 — minimal professional — Arch/zsh — threat level: ZERO'},
+      clear:function(){out.textContent='';return''}
+    };
+    function print(t){var d=document.createElement('div');d.textContent=t;out.appendChild(d);out.scrollTop=out.scrollHeight}
+    function run(raw){var p=raw.trim().split(/\s+/),c=(p[0]||'').toLowerCase(),a=p.slice(1);var e=document.createElement('div');e.textContent='zero@p0:~$ '+raw;out.appendChild(e);if(!c)return;if(cmds[c]){var r=cmds[c](a);if(r)print(r)}else{print("bash: "+c+": not found — try 'help'")}}
+    print('PROTOCOL ZERO TERMINAL v3 — type "help".');
+    inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value;inp.value='';hist.push(v);hi=hist.length;run(v)}else if(e.key==='ArrowUp'){e.preventDefault();if(hi>0){hi--;inp.value=hist[hi]}}else if(e.key==='ArrowDown'){e.preventDefault();if(hi<hist.length-1){hi++;inp.value=hist[hi]}else{hi=hist.length;inp.value=''}}});
+    document.getElementById('terminal').addEventListener('click',function(){inp.focus()});
+  })();
+  </script>
+</body>
 </html>
